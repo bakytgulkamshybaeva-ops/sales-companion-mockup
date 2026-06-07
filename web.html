@@ -10,8 +10,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root{
-  --navy:#0e2a40; --navy2:#143553; --teal:#13a3a3; --teal-d:#0d7e7e; --gold:#d9a441;
-  --bg:#eef2f6; --card:#fff; --ink:#16263a; --mut:#6b8095; --line:#e6ecf2;
+  --navy:#284157; --navy2:#355169; --teal:#007484; --teal-d:#005a67; --gold:#cfb372;
+  --bg:#f3f1ea; --card:#fff; --ink:#16263a; --mut:#6b8095; --line:#e6ecf2;
   --green:#1f9d57; --green-bg:#e7f6ee; --amber:#e0922f; --amber-bg:#fdf2e1;
   --red:#d6453d; --red-bg:#fcebe9; --blue:#3f6fb0; --blue-bg:#eaf1fa; --slate:#8595a5; --slate-bg:#eef1f4;
   --shadow:0 6px 22px -12px rgba(14,42,64,.30);
@@ -25,7 +25,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 a{color:inherit}
 
 /* top bar */
-.top{position:fixed;top:0;left:0;right:0;height:var(--topbar);background:linear-gradient(120deg,var(--navy),#0a2235);color:#fff;display:flex;align-items:center;gap:14px;padding:0 22px;z-index:30}
+.top{position:fixed;top:0;left:0;right:0;height:var(--topbar);background:linear-gradient(120deg,var(--navy),#1b2e3d);color:#fff;display:flex;align-items:center;gap:14px;padding:0 22px;z-index:30}
 .top .logo{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--teal),var(--teal-d));display:flex;align-items:center;justify-content:center;font-weight:900;font-size:17px;flex:none;box-shadow:0 4px 12px -3px rgba(19,163,163,.7)}
 .top .brand{font-weight:800;font-size:16px;letter-spacing:-.01em}
 .top .brand small{font-weight:500;font-size:11px;color:#86a4bb;display:block;line-height:1}
@@ -33,7 +33,7 @@ a{color:inherit}
 .top .b24{margin-left:auto;font-size:12px;font-weight:700;color:#bfe6cf;background:rgba(31,157,87,.18);border:1px solid rgba(31,157,87,.4);border-radius:8px;padding:5px 11px;display:flex;align-items:center;gap:7px}
 .top .b24 .d{width:8px;height:8px;border-radius:50%;background:#39d98a;box-shadow:0 0 8px #39d98a}
 .top .me{display:flex;align-items:center;gap:9px;margin-left:18px}
-.top .me .av{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#c98a2a);color:#3a2a08;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px}
+.top .me .av{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#b9975a);color:#3a2a08;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px}
 .top .me .nm{font-size:13px;font-weight:700;line-height:1.1}
 .top .me .nm small{display:block;font-weight:500;color:#9fbace;font-size:11px}
 
@@ -97,7 +97,7 @@ a{color:inherit}
 .gate:last-child{border-bottom:none}
 .gate .gi{width:22px;height:22px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;flex:none}
 .gate .gv{margin-left:auto;font-weight:800;color:var(--green);font-size:12.5px}
-.minibar{height:9px;border-radius:6px;background:#eef2f6;overflow:hidden;position:relative;margin:6px 0}
+.minibar{height:9px;border-radius:6px;background:#f3f1ea;overflow:hidden;position:relative;margin:6px 0}
 .minibar i{position:absolute;inset:0;border-radius:6px;background:linear-gradient(90deg,var(--amber),#eaa64a)}
 
 /* calls master-detail */
@@ -145,7 +145,7 @@ input[type=range]{width:100%;height:36px;accent-color:var(--teal);background:tra
 .toggle button{flex:1;min-height:42px;border:1.5px solid var(--line);border-radius:11px;background:#fff;font-weight:700;font-size:13px;color:var(--navy)}
 .toggle button.on{background:var(--teal);color:#fff;border-color:var(--teal)}
 .tiernote{font-size:13px;font-weight:700;color:var(--teal-d);margin-top:7px}
-.bonusbox{background:linear-gradient(135deg,var(--navy),#0a2235);border-radius:14px;padding:18px;margin-top:18px;text-align:center;color:#fff}
+.bonusbox{background:linear-gradient(135deg,var(--navy),#1b2e3d);border-radius:14px;padding:18px;margin-top:18px;text-align:center;color:#fff}
 .bonusbox .bl{font-size:12px;color:#9fbace;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
 .bonusbox .bv{font-size:36px;font-weight:900;letter-spacing:-.02em;color:var(--gold);margin:5px 0 3px}
 .bonusbox .bf{font-size:12px;color:#b9cad9;font-weight:600}
@@ -198,7 +198,7 @@ tr.hl td{background:var(--amber-bg);font-weight:800}
 .coinhead .cc{font-size:30px;font-weight:900;color:var(--gold);letter-spacing:-.02em;line-height:1}
 .coinways{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0 4px}
 .coinways .cw{font-size:12px;font-weight:700;background:var(--amber-bg);color:#8a5a14;border-radius:9px;padding:5px 10px}
-.celebrate{background:linear-gradient(135deg,var(--navy),#0a2235);border-radius:14px;padding:18px;text-align:center;color:#fff}
+.celebrate{background:linear-gradient(135deg,var(--navy),#1b2e3d);border-radius:14px;padding:18px;text-align:center;color:#fff}
 .celebrate .ce{font-size:30px;line-height:1}
 .celebrate .cv{font-size:16px;font-weight:800;color:var(--gold);margin:7px 0 2px;line-height:1.3}
 .celebrate .cf{font-size:12.5px;color:#b9cad9;font-weight:600}
@@ -208,8 +208,8 @@ tr.hl td{background:var(--amber-bg);font-weight:800}
 .skillcard .sx b{color:var(--teal-d)}
 
 /* speed-to-lead banner (Мой день) */
-.speedbar{display:flex;align-items:center;gap:16px;background:linear-gradient(120deg,var(--navy),#0a2235);color:#fff;border-radius:16px;padding:16px 20px;margin-bottom:18px;box-shadow:var(--shadow)}
-.speedbar .sb-ic{width:46px;height:46px;border-radius:13px;background:linear-gradient(135deg,var(--gold),#c98a2a);display:flex;align-items:center;justify-content:center;font-size:24px;flex:none}
+.speedbar{display:flex;align-items:center;gap:16px;background:linear-gradient(120deg,var(--navy),#1b2e3d);color:#fff;border-radius:16px;padding:16px 20px;margin-bottom:18px;box-shadow:var(--shadow)}
+.speedbar .sb-ic{width:46px;height:46px;border-radius:13px;background:linear-gradient(135deg,var(--gold),#b9975a);display:flex;align-items:center;justify-content:center;font-size:24px;flex:none}
 .speedbar .sb-main{flex:1;min-width:0}
 .speedbar .sb-t{font-size:14px;font-weight:700;color:#dce7f0}
 .speedbar .sb-t b{font-size:21px;font-weight:900;color:#fff;margin:0 5px}
@@ -253,7 +253,24 @@ tr.hl td{background:var(--amber-bg);font-weight:800}
 .bench .bcell.top .bv{color:var(--teal-d)} .bench .bcell.team .bv{color:var(--slate)}
 .bench .gap{font-size:11px;font-weight:800;border-radius:7px;padding:3px 8px;white-space:nowrap}
 .bench .gap.good{background:var(--green-bg);color:var(--green)}
-@media(max-width:1080px){.grid2{grid-template-columns:1fr}.calls{grid-template-columns:1fr}.rail{order:-1}.trainwrap{grid-template-columns:1fr}.speedbar{flex-wrap:wrap}}
+/* теплокарта времени звонка */
+.heat{display:grid;grid-template-columns:64px repeat(7,1fr);gap:5px;font-size:11px}
+.heat .hh{font-weight:800;color:var(--mut);text-align:center;align-self:center;padding-bottom:2px}
+.heat .hr{font-weight:800;color:var(--ink);align-self:center;font-size:11px}
+.heat .hc{height:32px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-weight:800}
+.heat .l0{background:#eef1f4;color:#aab6c0} .heat .l1{background:#cfe8ec;color:#0d6b73} .heat .l2{background:#7fc4cb;color:#073f45} .heat .l3{background:var(--teal);color:#fff} .heat .l4{background:var(--teal-d);color:#fff}
+.heatwin{display:flex;align-items:center;gap:8px;background:var(--navy);color:#dce7f0;border-radius:11px;padding:10px 13px;font-size:13px;font-weight:600;margin-top:12px}
+.heatwin b{color:var(--gold)}
+/* каденции follow-up */
+.cad{display:flex;flex-direction:column}
+.cadi{display:flex;gap:13px;position:relative;padding:0 0 15px 0}
+.cadi:last-child{padding-bottom:0}
+.cadi .cdot{width:30px;height:30px;border-radius:50%;background:var(--teal);color:#fff;font-weight:900;font-size:12px;display:flex;align-items:center;justify-content:center;flex:none;z-index:1}
+.cadi:not(:last-child):before{content:"";position:absolute;left:14px;top:30px;bottom:0;width:2px;background:var(--line)}
+.cadi .ctxt{font-size:13px;line-height:1.45;padding-top:4px}
+.cadi .ctxt b{color:var(--navy)}
+.cadi .ctxt .cwhen{display:block;font-size:11px;font-weight:800;color:var(--teal-d);text-transform:uppercase;letter-spacing:.03em;margin-bottom:1px}
+@media(max-width:1080px){.grid2{grid-template-columns:1fr}.calls{grid-template-columns:1fr}.rail{order:-1}.trainwrap{grid-template-columns:1fr}.speedbar{flex-wrap:wrap}.heat{font-size:9px;grid-template-columns:48px repeat(7,1fr)}}
 </style>
 </head>
 <body>
@@ -357,6 +374,11 @@ tr.hl td{background:var(--amber-bg);font-weight:800}
       </div>
       <div class="qfocus">🎯 Фокус недели: <b>Закрытие на дату показа (КЭВ)</b> — та же точка роста, что в разделе «Прогресс».</div>
     </div>
+    <div class="card">
+      <div class="ct">⏰ Лучшее время для звонка <small id="heatSrc">по дозвонам и согласиям · демо</small></div>
+      <div class="heat" id="heatGrid"></div>
+      <div class="heatwin">🏆 <span>Лучшее окно: <b>будни 18:00–21:00</b> и около <b>11:00–13:00</b> — дозвон и согласие на показ выше. Планируй горячие звонки сюда.</span></div>
+    </div>
     <div class="calls">
       <div class="calllist" id="callList"></div>
       <div class="card detail" id="callDetail"></div>
@@ -437,6 +459,55 @@ tr.hl td{background:var(--amber-bg);font-weight:800}
           <div style="font-size:13.5px;line-height:1.6;color:var(--ink)">Не «приходите посмотреть», а ценность времени:<br><br>«Подготовлю <b>2–3 варианта</b> под вашу задачу, <b>рассчитаю условия и платёж</b>, сравним сценарии и покажу маршрут по объекту, как он работает в жизни».</div>
           <div class="lbl" style="margin:13px 2px 7px">Под сегмент</div>
           <div style="font-size:12.5px;line-height:1.7;color:var(--ink)">👨‍👩‍👧 Семья — школа / двор / планировка<br>📈 Инвестор — доходность, ликвидность, вход<br>🏙 Премиум — приватность, статус, соседи<br>🔑 Первая квартира — платёж, простота, сроки</div>
+        </div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <div class="ct">🔁 Каденции follow-up <small>чтобы лид не терялся · по Гребенюку</small></div>
+      <div class="grid2">
+        <div>
+          <div class="lbl" style="margin:0 2px 9px">После показа</div>
+          <div class="cad">
+            <div class="cadi"><div class="cdot">1</div><div class="ctxt"><span class="cwhen">в тот же день</span><b>Резюме + ответы.</b> Спасибо за визит, краткое «что подошло», закрыть открытые вопросы.</div></div>
+            <div class="cadi"><div class="cdot">2</div><div class="ctxt"><span class="cwhen">+1–2 дня</span><b>Расчёт под клиента.</b> 2–3 варианта + расчёт платежа/рассрочки, предложить созвон.</div></div>
+            <div class="cadi"><div class="cdot">3</div><div class="ctxt"><span class="cwhen">+5–7 дней</span><b>Инфоповод.</b> Цена/остаток, новая планировка, акция — повод вернуться без «ну что решили».</div></div>
+            <div class="cadi"><div class="cdot">4</div><div class="ctxt"><span class="cwhen">+14 дней</span><b>Полезное касание.</b> Контент по выбору/ипотеке; держим тёплым до готовности.</div></div>
+          </div>
+        </div>
+        <div class="rail">
+          <div class="card tight" style="box-shadow:none;border:1px solid var(--line)">
+            <div class="ct">После недозвона</div>
+            <div style="font-size:13px;line-height:1.7;color:var(--ink)">1. Перезвон в <b>другое окно дня</b> (см. «Звонки» → лучшее время)<br>2. Короткое сообщение: кто я + ценность встречи<br>3. Ещё попытка звонка через день<br>4. После 3 недозвонов → в долгий прогрев, не в LOSE</div>
+            <div style="font-size:11.5px;color:var(--mut);font-weight:600;margin-top:9px;line-height:1.5">Правило: у каждого активного лида всегда есть <b>следующий шаг с датой</b> в CRM.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <div class="ct">🎓 Онбординг и тренировки <small>ввод новичка + недельный цикл</small></div>
+      <div class="grid2">
+        <div>
+          <div class="lbl" style="margin:0 2px 9px">Недельный цикл тренировок</div>
+          <div style="display:flex;flex-direction:column">
+            <div style="display:flex;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line)"><span style="width:34px;height:26px;border-radius:7px;background:var(--navy);color:#fff;font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;flex:none">Пн</span><span style="font-size:13px">Вера в продукт + новые факты по ЖК</span></div>
+            <div style="display:flex;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line)"><span style="width:34px;height:26px;border-radius:7px;background:var(--navy);color:#fff;font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;flex:none">Вт</span><span style="font-size:13px">Презентация под боль клиента</span></div>
+            <div style="display:flex;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line)"><span style="width:34px;height:26px;border-radius:7px;background:var(--navy);color:#fff;font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;flex:none">Ср</span><span style="font-size:13px">Мягкие возражения и сомнения</span></div>
+            <div style="display:flex;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line)"><span style="width:34px;height:26px;border-radius:7px;background:var(--navy);color:#fff;font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;flex:none">Чт</span><span style="font-size:13px">Истинные/ложные возражения из реальных звонков</span></div>
+            <div style="display:flex;gap:10px;align-items:center;padding:9px 0"><span style="width:34px;height:26px;border-radius:7px;background:var(--navy);color:#fff;font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;flex:none">Пт</span><span style="font-size:13px">Закрытие на следующий шаг + follow-up</span></div>
+          </div>
+        </div>
+        <div class="rail">
+          <div class="card tight" style="box-shadow:none;border:1px solid var(--line)">
+            <div class="ct">Экзамен новичка · допуск к лидам</div>
+            <div class="checks">
+              <span class="chk y">✓ Знает продукт / ЖК</span>
+              <span class="chk y">✓ Проводит ABC-квалификацию</span>
+              <span class="chk y">✓ Отрабатывает топ-3 возражения</span>
+              <span class="chk y">✓ Закрывает на КЭВ (дата показа)</span>
+              <span class="chk y">✓ Ведёт CRM + follow-up</span>
+            </div>
+            <div style="font-size:11.5px;color:var(--mut);font-weight:600;margin-top:10px;line-height:1.5">Допуск к «боевым» лидам — после экзамена. Так новичок не жжёт лиды, пока учится.</div>
+          </div>
         </div>
       </div>
     </div>
@@ -812,7 +883,18 @@ function renderBench(b){
   }).join('');
 }
 
-renderCli(); renderCalls(); openCall('c1'); calcBonus(); renderProgress(); renderObj(); openObj('price'); renderBench(benchDemo);
+/* ВРЕМЯ ЗВОНКА — теплокарта (демо; интенсивность 0–4 = дозвон+согласие) */
+var heatDays=['Пн','Вт','Ср','Чт','Пт','Сб','Вс'];
+var heatRows=[['9–12',[2,3,3,3,3,1,0]],['12–15',[3,3,2,3,3,2,1]],['15–18',[2,2,2,3,3,2,1]],['18–21',[4,4,3,4,4,3,2]]];
+function renderHeat(){
+  var h='<div class="hh"></div>'+heatDays.map(function(d){return '<div class="hh">'+d+'</div>';}).join('');
+  heatRows.forEach(function(r){
+    h+='<div class="hr">'+r[0]+'</div>'+r[1].map(function(v){return '<div class="hc l'+v+'">'+(v>=4?'★':'')+'</div>';}).join('');
+  });
+  document.getElementById('heatGrid').innerHTML=h;
+}
+
+renderCli(); renderCalls(); openCall('c1'); calcBonus(); renderProgress(); renderObj(); openObj('price'); renderBench(benchDemo); renderHeat();
 
 /* ===== DATA-LAYER (additive, fallback-safe) =====
    Тянет реальные метрики из коннектора companion_metrics.py (companion_metrics.json).

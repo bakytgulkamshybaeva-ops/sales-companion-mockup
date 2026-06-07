@@ -10,21 +10,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root{
-  --navy:#0e2a40; --teal:#13a3a3; --teal-d:#0d7e7e; --gold:#d9a441;
-  --bg:#eef2f6; --card:#fff; --ink:#16263a; --mut:#6b8095; --line:#e6ecf2;
+  --navy:#284157; --teal:#007484; --teal-d:#005a67; --gold:#cfb372;
+  --bg:#f3f1ea; --card:#fff; --ink:#16263a; --mut:#6b8095; --line:#e6ecf2;
   --green:#1f9d57; --green-bg:#e7f6ee; --amber:#e0922f; --amber-bg:#fdf2e1;
   --red:#d6453d; --red-bg:#fcebe9; --blue:#3f6fb0; --blue-bg:#eaf1fa; --slate:#8595a5; --slate-bg:#eef1f4;
   --shadow:0 6px 22px -12px rgba(14,42,64,.30);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Archivo',-apple-system,'Segoe UI',sans-serif;background:var(--bg);color:var(--ink);line-height:1.45}
-.top{background:linear-gradient(120deg,var(--navy),#0a2235);color:#fff;display:flex;align-items:center;gap:14px;padding:14px 22px}
+.top{background:linear-gradient(120deg,var(--navy),#1b2e3d);color:#fff;display:flex;align-items:center;gap:14px;padding:14px 22px}
 .top .logo{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--teal),var(--teal-d));display:flex;align-items:center;justify-content:center;font-weight:900;font-size:17px}
 .top .brand{font-weight:800;font-size:16px;letter-spacing:-.01em}
 .top .brand small{display:block;font-weight:500;font-size:11px;color:#86a4bb}
 .top .period{margin-left:18px;background:rgba(255,255,255,.1);border-radius:9px;padding:6px 12px;font-size:13px;font-weight:700}
 .top .me{margin-left:auto;display:flex;align-items:center;gap:9px}
-.top .me .av{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#c98a2a);color:#3a2a08;display:flex;align-items:center;justify-content:center;font-weight:800}
+.top .me .av{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#b9975a);color:#3a2a08;display:flex;align-items:center;justify-content:center;font-weight:800}
 .top .me .nm{font-size:13px;font-weight:700;line-height:1.1}
 .top .me .nm small{display:block;font-weight:500;color:#9fbace;font-size:11px}
 .wrap{max-width:1100px;margin:0 auto;padding:20px 18px 60px}
@@ -52,7 +52,24 @@ tr.risk td{background:var(--red-bg)}
 .vq{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--line)}
 .vq:last-child{border-bottom:none} .vq .info{flex:1} .vq .nm{font-weight:800;font-size:13.5px} .vq .why{font-size:12px;color:var(--mut);font-weight:600;margin-top:2px}
 .demo{text-align:center;font-size:11px;color:var(--mut);margin-top:14px}
-@media(max-width:880px){.grid2{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}}
+/* воронка-течь */
+.funnel{display:flex;flex-direction:column;gap:4px}
+.fstage{display:flex;align-items:center;gap:12px}
+.fstage .flabel{width:170px;font-size:13px;font-weight:700;flex:none}
+.fstage .fbar{height:34px;border-radius:9px;background:linear-gradient(90deg,var(--teal),var(--teal-d));display:flex;align-items:center;padding:0 12px;color:#fff;font-weight:900;font-size:13px;min-width:46px;box-shadow:var(--shadow)}
+.fconv{font-size:11.5px;font-weight:800;color:var(--mut);padding:1px 0 1px 182px}
+.fconv .leak{color:var(--red);background:var(--red-bg);border-radius:6px;padding:1px 7px}
+.fconv .okc{color:var(--green);background:var(--green-bg);border-radius:6px;padding:1px 7px}
+/* доска РОП */
+.board{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.board .bi{background:var(--slate-bg);border-radius:11px;padding:11px 13px;font-size:12.5px;line-height:1.45}
+.board .bi b{display:block;font-size:11px;color:var(--teal-d);font-weight:800;text-transform:uppercase;letter-spacing:.03em;margin-bottom:3px}
+/* очередь коучинга */
+.coach{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--line)}
+.coach:last-child{border-bottom:none}
+.coach .cw{width:30px;height:30px;border-radius:9px;background:var(--amber-bg);color:var(--amber);display:flex;align-items:center;justify-content:center;font-weight:900;flex:none}
+.coach .ci{flex:1} .coach .cn{font-weight:800;font-size:13.5px} .coach .cy{font-size:12px;color:var(--mut);font-weight:600;margin-top:2px;line-height:1.4}
+@media(max-width:880px){.grid2{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.board{grid-template-columns:1fr}.fstage .flabel{width:120px}.fconv{padding-left:132px}}
 </style>
 </head>
 <body>
@@ -75,6 +92,17 @@ tr.risk td{background:var(--red-bg)}
     <div class="stat"><div class="n">716</div><div class="l">обработано лидов · группа</div></div>
     <div class="stat"><div class="n">38 860</div><div class="l">звонков с разговором</div></div>
     <div class="stat"><div class="n" style="color:var(--amber)">87%</div><div class="l">план группы (демо)</div></div>
+  </div>
+
+  <!-- Воронка-течь (где теряются лиды) -->
+  <div class="card">
+    <div class="ct">📉 Воронка-течь · где теряются лиды <small id="funnelSrc">cat0 · группа · демо</small></div>
+    <div class="funnel" id="funnelBody"></div>
+    <div style="display:flex;gap:14px;margin-top:14px;flex-wrap:wrap;align-items:stretch">
+      <div class="stat" style="flex:1;min-width:150px"><div class="n" style="color:var(--red)" id="noshowVal">26.7%</div><div class="l">no-show · подтверждён → не дошёл</div></div>
+      <div class="stat" style="flex:3;min-width:240px;display:flex;align-items:center"><div class="l" style="margin:0;font-size:12.5px;line-height:1.5">Где бить: переход <b style="color:var(--ink)">Взято → Записан ~33%</b> — скрипт и возражения (Тренажёр); <b style="color:var(--red)">no-show ~27%</b> — подтверждение визита за день (антисрыв). Это два главных рычага группы.</div></div>
+    </div>
+    <div style="font-size:11.5px;color:var(--mut);font-weight:600;margin-top:8px;line-height:1.5">Этапы cat0 недозаполнены (дисциплина) → диагностика «где течёт», не для начисления. Полную картину даст фикс данных (см. письмо PM).</div>
   </div>
 
   <div class="grid2">
@@ -136,6 +164,29 @@ tr.risk td{background:var(--red-bg)}
     <div style="font-size:11.5px;color:var(--mut);font-weight:600;margin-top:10px;line-height:1.5">Решение «не клиент / не дошёл» — за РОП/контролем качества, не за менеджером (анти-ангажированность). Спорное оспаривается по записи.</div>
   </div>
 
+  <!-- Еженедельная доска РОП (ритуал) -->
+  <div class="card">
+    <div class="ct">📋 Доска РОП · неделя <small>ритуал планёрки (по Гребенюку)</small></div>
+    <div class="board">
+      <div class="bi"><b>Лиды · A/B/C</b>716 обработано · A 22% · B 41% · C 37%</div>
+      <div class="bi"><b>Назначено / проведено</b>240 записано → 132 визита · no-show 27%</div>
+      <div class="bi"><b>Главная потеря недели</b>Срыв подтверждённых визитов (48) + просадка «Взято → Записан»</div>
+      <div class="bi"><b>Лучшая практика</b>М2 / М4: дозвон ≤12 мин, подтверждение визита накануне</div>
+      <div class="bi"><b>Тема тренировки</b>Закрытие на дату показа (КЭВ) + возражение «Я подумаю»</div>
+      <div class="bi"><b>Решение РОП</b>Ввести обязательное подтверждение визита за 24ч; коучинг М5, М3</div>
+    </div>
+    <div style="font-size:11.5px;color:var(--mut);font-weight:600;margin-top:10px;line-height:1.5">Один экран на планёрку: лиды → этапы → потеря → практика → тренировка → решение. A/B/C и потеря — после фикса данных станут полностью достоверными.</div>
+  </div>
+
+  <!-- Очередь коучинга -->
+  <div class="card">
+    <div class="ct">🎓 Очередь коучинга · кого и по чему <small>из надёжных сигналов</small></div>
+    <div class="coach"><div class="cw">5</div><div class="ci"><div class="cn">Менеджер 5 · приоритет</div><div class="cy">Медленный дозвон (63 мин) + 21 остывающий лид → тренировка «скорость + follow-up», парный прозвон с топом</div></div><button class="btn ghost">План коучинга</button></div>
+    <div class="coach"><div class="cw">3</div><div class="ci"><div class="cn">Менеджер 3</div><div class="cy">Низкая бронь из разговора + ОКК 3,9 → разбор 5 звонков, отработка возражений «Дорого» / «Я подумаю»</div></div><button class="btn ghost">План коучинга</button></div>
+    <div class="coach"><div class="cw">!</div><div class="ci"><div class="cn">Вся группа</div><div class="cy">No-show 27% выше нормы → ритуал подтверждения визитов за 24ч на всю группу</div></div><button class="btn ghost">Запустить</button></div>
+    <div style="font-size:11.5px;color:var(--mut);font-weight:600;margin-top:8px;line-height:1.5">Кого коучить выбирается по надёжным метрикам (скорость, остывание, звонки, ОКК) — не по заблокированной конверсии.</div>
+  </div>
+
   <div class="demo">Демо · РОП-MVP по docs/handoff-rop.md · данные условные, имена вымышленные · конверсия/премия — наблюдение до фикса данных Bitrix</div>
 </div>
 
@@ -158,11 +209,29 @@ function renderBench(b){
     return '<tr><td>'+r.metric+'</td><td><b>'+fmtNum(r.top)+(r.unit||'')+'</b></td><td style="color:var(--mut)">'+fmtNum(r.team)+(r.unit||'')+'</td><td>'+gap+'</td></tr>';
   }).join('');
 }
-renderBench(benchDemo);
+/* Воронка-течь — демо, перекрывается data.funnel из коннектора */
+var funnelDemo={stages:[{label:'Взято в работу',count:716},{label:'Записан на встречу',count:240},{label:'Подтверждён визит',count:180},{label:'Фактический визит',count:132}],noshow_count:48,rates:{worked_to_booked:33.5,booked_to_confirmed:75.0,confirmed_to_visit:73.3,noshow_pct:26.7}};
+var RKEYS=['worked_to_booked','booked_to_confirmed','confirmed_to_visit'];
+function renderFunnel(f){
+  if(!f||!Array.isArray(f.stages)) f=funnelDemo;
+  var max=Math.max.apply(null,f.stages.map(function(s){return s.count||0;}))||1;
+  var html='';
+  f.stages.forEach(function(s,i){
+    var w=Math.max(12,Math.round((s.count||0)/max*100));
+    html+='<div class="fstage"><div class="flabel">'+s.label+'</div><div class="fbar" style="width:'+w+'%">'+(s.count!=null?s.count:'—')+'</div></div>';
+    if(i<f.stages.length-1){ var r=f.rates?f.rates[RKEYS[i]]:null; var leak=(typeof r==='number'&&r<60); html+='<div class="fconv">↓ <span class="'+(leak?'leak':'okc')+'">'+(r!=null?r+'%':'—')+'</span> переходят дальше'+(leak?' · течь':'')+'</div>'; }
+  });
+  document.getElementById('funnelBody').innerHTML=html;
+  var ns=document.getElementById('noshowVal'); if(ns&&f.rates&&f.rates.noshow_pct!=null) ns.textContent=f.rates.noshow_pct+'%';
+}
+renderBench(benchDemo); renderFunnel(funnelDemo);
 (function(){
   var URLS=['companion_metrics.json','../integration/companion_metrics.json'];
   function ff(u,i){ i=i||0; if(i>=u.length) return Promise.reject(new Error('no src')); return fetch(u[i]).then(function(r){ if(!r.ok) throw new Error('http'); return r.json(); }).catch(function(){ return ff(u,i+1); }); }
-  try{ ff(URLS).then(function(d){ if(d&&d.top_behaviors&&Array.isArray(d.top_behaviors.rows)){ renderBench(d.top_behaviors); var s=document.getElementById('benchSrc'); if(s) s.textContent='live · топы vs команда'; } }).catch(function(){}); }catch(e){}
+  try{ ff(URLS).then(function(d){
+    if(d&&d.top_behaviors&&Array.isArray(d.top_behaviors.rows)){ renderBench(d.top_behaviors); var s=document.getElementById('benchSrc'); if(s) s.textContent='live · топы vs команда'; }
+    if(d&&d.funnel&&Array.isArray(d.funnel.stages)){ renderFunnel(d.funnel); var fs=document.getElementById('funnelSrc'); if(fs) fs.textContent='cat0 · группа · live'; }
+  }).catch(function(){}); }catch(e){}
 })();
 </script>
 </body>
