@@ -214,7 +214,9 @@ tr.risk td{background:var(--red-bg)}
 /* «Что делают топы» — демо, перекрывается top_behaviors из коннектора (companion_metrics.json) */
 var benchDemo={rows:[
   {metric:'Успешные звонки', top:155, team:136, better:'higher', unit:''},
-  {metric:'Минут разговора / звонок', top:1.4, team:1.3, better:'higher', unit:' мин'},
+  {metric:'Реальных разговоров (≥10с)', top:118, team:92, better:'higher', unit:''},
+  {metric:'Разговоров на 100 звонков', top:14, team:11, better:'higher', unit:'%'},
+  {metric:'Минут / реальный разговор', top:1.8, team:1.5, better:'higher', unit:' мин'},
   {metric:'Скорость до 1-го звонка', top:11.5, team:20.5, better:'lower', unit:' мин'},
   {metric:'Остывающих лидов', top:3.5, team:7.5, better:'lower', unit:''},
   {metric:'Обработано лидов', top:196.5, team:192, better:'higher', unit:''}
