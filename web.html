@@ -594,6 +594,7 @@ tr.hl td{background:var(--amber-bg);font-weight:800}
         <div class="kpirow"><div class="kn">План по встречам<small>гейт ≥60% · иначе бонус 0</small></div><div class="kv" id="kpiPlan" style="color:var(--green)">76%</div><span class="tag ok">✓ пройден</span></div>
         <div class="kpirow"><div class="kn">CRM-дисциплина<small>гейт ≥90% · иначе бонус 0</small></div><div class="kv" id="kpiCrm" style="color:var(--green)">92%</div><span class="tag ok">✓ пройден</span></div>
         <div class="kpirow"><div class="kn">Успешные звонки / день<small>норма ≥30</small></div><div class="kv" style="color:var(--green)">34</div><span class="tag ok">✓</span></div>
+        <div class="kpirow"><div class="kn">Дозваниваемость<small>реальных разговоров (≥10с) на 100 звонков</small></div><div class="kv" id="kpiConnect" style="color:var(--teal-d)">70%</div><span class="tag nt">сигнал</span></div>
         <div class="kpirow"><div class="kn">Время на линии<small>норма ≥2 часа</small></div><div class="kv" style="color:var(--green)">2:40</div><span class="tag ok">✓</span></div>
         <div class="kpirow"><div class="kn">Качество ОКК (1–5)<small>≥4,8 +50к · &lt;3,5 −30% бонуса</small></div><div class="kv" style="color:var(--amber)">4,3</div><span class="tag nt">нейтрально</span></div>
       </div>
@@ -932,6 +933,7 @@ function applyMetrics(data){
       if(typeof m.crm_discipline_pct==='number') setTxt('kpiCrm', m.crm_discipline_pct+'%');
       if(typeof m.meetings_held==='number') setTxt('kpiVis', m.meetings_held);
       if(typeof m.answered_calls==='number') setTxt('kpiCalls', m.answered_calls);
+      if(typeof m.conversation_rate==='number') setTxt('kpiConnect', m.conversation_rate+'%');
       // speed-to-lead (Мой день): значение + цвет цели + заполнение шкалы (полнее = быстрее = лучше)
       if(typeof m.speed_to_lead_min==='number'){
         setTxt('sbVal', m.speed_to_lead_min+' мин');

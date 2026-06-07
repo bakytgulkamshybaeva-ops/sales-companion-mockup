@@ -125,6 +125,16 @@ tr.risk td{background:var(--red-bg)}
     <div id="hygBody"></div>
   </div>
 
+  <!-- Источники лидов -->
+  <div class="card">
+    <div class="ct">📊 Источники лидов · куда лить бюджет <small id="srcSrc">объём + бронь · демо</small></div>
+    <table>
+      <thead><tr><th>Источник</th><th>Лидов</th><th>Бронь встреч</th><th></th></tr></thead>
+      <tbody id="srcBody"></tbody>
+    </table>
+    <div style="font-size:11.5px;color:var(--mut);font-weight:600;margin-top:10px;line-height:1.5">Сравнение каналов по конверсии в бронь. <b style="color:var(--teal-d)">Лей в источники с высокой бронью</b>, режь слабые. Booking-rate директивно по стадии cat0 (точная атрибуция — после фикса линковки).</div>
+  </div>
+
   <div class="grid2">
     <!-- Модуль 1: Группа (ростер, сортировка по риску) -->
     <div class="card">
@@ -265,7 +275,26 @@ function renderHygiene(h){
       '<div class="hgl">'+it.label+'<small>'+it.hint+'</small></div><div class="hgv">'+it.value+'</div></div>';
   }).join('');
 }
-renderBench(benchDemo); renderFunnel(funnelDemo); renderHygiene(hygDemo);
+/* Источники лидов — демо, перекрывается data.sources */
+var srcDemo=[
+  {name:'Партнёры',leads:92,booking_rate:31.5},
+  {name:'Входящий звонок',leads:280,booking_rate:26.4},
+  {name:'Сайт / форма',leads:210,booking_rate:18.1},
+  {name:'Реклама',leads:180,booking_rate:12.2},
+  {name:'Instagram',leads:80,booking_rate:11.3}
+];
+function renderSources(rows){
+  if(!Array.isArray(rows)||!rows.length) rows=srcDemo;
+  var max=Math.max.apply(null,rows.map(function(r){return r.booking_rate||0;}))||1;
+  document.getElementById('srcBody').innerHTML=rows.map(function(r){
+    var rate=(typeof r.booking_rate==='number')?r.booking_rate:null;
+    var good=rate!=null&&rate>=20, bar=rate!=null?Math.round(rate/max*100):0;
+    return '<tr><td><b>'+r.name+'</b></td><td>'+(r.leads!=null?r.leads:'—')+'</td>'+
+      '<td><div style="display:flex;align-items:center;gap:8px"><div style="flex:1;max-width:120px;height:8px;border-radius:5px;background:#eef1f4;overflow:hidden"><i style="display:block;height:100%;width:'+bar+'%;background:'+(good?'var(--green)':'var(--amber)')+'"></i></div><b>'+(rate!=null?rate+'%':'—')+'</b></div></td>'+
+      '<td>'+(good?'<span class="tag ok">лить</span>':'<span class="tag warn">слабый</span>')+'</td></tr>';
+  }).join('');
+}
+renderBench(benchDemo); renderFunnel(funnelDemo); renderHygiene(hygDemo); renderSources(srcDemo);
 (function(){
   var URLS=['companion_metrics.json','../integration/companion_metrics.json'];
   function ff(u,i){ i=i||0; if(i>=u.length) return Promise.reject(new Error('no src')); return fetch(u[i]).then(function(r){ if(!r.ok) throw new Error('http'); return r.json(); }).catch(function(){ return ff(u,i+1); }); }
@@ -273,6 +302,7 @@ renderBench(benchDemo); renderFunnel(funnelDemo); renderHygiene(hygDemo);
     if(d&&d.top_behaviors&&Array.isArray(d.top_behaviors.rows)){ renderBench(d.top_behaviors); var s=document.getElementById('benchSrc'); if(s) s.textContent='live · топы vs команда'; }
     if(d&&d.funnel&&Array.isArray(d.funnel.stages)){ renderFunnel(d.funnel); var fs=document.getElementById('funnelSrc'); if(fs) fs.textContent='cat0 · группа · live'; }
     if(d&&d.crm_hygiene&&Array.isArray(d.crm_hygiene.items)){ renderHygiene(d.crm_hygiene); var hs=document.getElementById('hygSrc'); if(hs) hs.textContent='read-only деривация · live'; }
+    if(d&&d.sources&&Array.isArray(d.sources.sources)){ renderSources(d.sources.sources); var ss=document.getElementById('srcSrc'); if(ss) ss.textContent='объём + бронь · live'; }
   }).catch(function(){}); }catch(e){}
 })();
 </script>
