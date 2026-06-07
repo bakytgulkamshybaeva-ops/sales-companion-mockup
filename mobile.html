@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0e2a40">
+<meta name="robots" content="noindex,nofollow">
+<title>Напарник продавца — мокап</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0e2a40; --navy2:#143553; --teal:#13a3a3; --teal-d:#0d7e7e; --gold:#d9a441;
+  --bg:#e7eef4; --card:#fff; --ink:#16263a; --mut:#6b8095; --line:#e6ecf2;
+  --green:#1f9d57; --green-bg:#e7f6ee; --amber:#e0922f; --amber-bg:#fdf2e1;
+  --red:#d6453d; --red-bg:#fcebe9; --blue:#3f6fb0; --blue-bg:#eaf1fa; --slate:#8595a5; --slate-bg:#eef1f4;
+  --shadow:0 8px 26px -12px rgba(14,42,64,.32); --tap:54px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{color-scheme:light;-webkit-text-size-adjust:100%}
+body{font-family:'Archivo',-apple-system,'Segoe UI',sans-serif;background:#cdd8e2;color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.4}
+button{font-family:inherit;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;border:none;background:none}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:10px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+.app{max-width:468px;margin:0 auto;min-height:100vh;background:var(--bg);position:relative;box-shadow:0 0 60px -20px rgba(14,42,64,.5);overflow:hidden}
+@media(min-width:520px){.app{margin:18px auto;min-height:calc(100vh - 36px);border-radius:30px;border:1px solid #d4dde6}}
+.prevbadge{background:repeating-linear-gradient(135deg,#1c2b46,#1c2b46 12px,#22314d 12px,#22314d 24px);color:#ffd98a;font-size:10.5px;font-weight:800;text-align:center;padding:5px 10px;letter-spacing:.04em}
+
+/* top */
+.tg{background:linear-gradient(160deg,var(--navy),#0a2235);color:#fff;padding:14px 18px;display:flex;align-items:center;gap:11px;position:sticky;top:0;z-index:20}
+.tg .logo{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--teal),var(--teal-d));display:flex;align-items:center;justify-content:center;font-weight:900;font-size:17px;flex:none;box-shadow:0 4px 12px -3px rgba(19,163,163,.7)}
+.tg .ttl{font-weight:800;font-size:16px;letter-spacing:-.01em;line-height:1.1}
+.tg .ttl small{display:block;font-weight:500;font-size:11px;color:#86a4bb}
+.tg .av{margin-left:auto;width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#c98a2a);color:#3a2a08;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex:none}
+
+/* screens */
+.wrap{padding:16px 15px 90px;display:none}
+.wrap.on{display:block;animation:fade .25s ease both}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.daterow{font-size:13px;color:var(--mut);font-weight:700;margin:2px 2px 12px;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.focus{background:var(--navy);color:#dce7f0;border-radius:14px;padding:12px 14px;font-size:13.5px;font-weight:600;margin-bottom:14px;display:flex;gap:9px;align-items:flex-start}
+.focus b{color:#fff}
+.focus .ic{flex:none}
+
+/* stat chips */
+.stats{display:flex;gap:8px;margin-bottom:16px}
+.stat{flex:1;background:var(--card);border:1px solid #eef3f7;border-radius:14px;padding:11px 8px;text-align:center;box-shadow:var(--shadow)}
+.stat .n{font-size:22px;font-weight:900;line-height:1;letter-spacing:-.02em}
+.stat .l{font-size:10.5px;color:var(--mut);font-weight:700;margin-top:4px;line-height:1.25}
+.stat.hot .n{color:var(--red)} .stat.warm .n{color:var(--amber)} .stat.cool .n{color:var(--teal-d)}
+
+.sh{font-size:15px;font-weight:800;margin:20px 4px 11px;display:flex;align-items:center;gap:9px}
+.sh small{font-weight:600;font-size:11.5px;color:var(--mut);margin-left:auto}
+
+/* priority client card */
+.cli{background:var(--card);border-radius:16px;box-shadow:var(--shadow);border:1px solid #eef3f7;border-left:6px solid var(--slate);margin-bottom:11px;overflow:hidden;animation:rise .3s ease both}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.cli.hot{border-left-color:var(--red)} .cli.warm{border-left-color:var(--amber)} .cli.cool{border-left-color:var(--green)}
+.cli .in{padding:13px 14px}
+.cli .r1{display:flex;align-items:center;gap:8px}
+.cli .nm{font-size:15.5px;font-weight:800}
+.cli .jk{font-size:11.5px;color:var(--mut);font-weight:700;background:#f0f4f8;border-radius:7px;padding:1px 7px}
+.cli .heat{margin-left:auto;font-size:16px}
+.cli .why{font-size:13px;color:var(--ink);margin-top:8px;background:#f5f8fa;border-radius:10px;padding:9px 11px;line-height:1.45}
+.cli .why b{color:var(--teal-d)}
+.cli .acts{display:flex;gap:8px;margin-top:11px}
+.cli .bp{flex:1;min-height:44px;border-radius:11px;background:var(--teal);color:#fff;font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center;gap:6px;box-shadow:0 5px 13px -6px rgba(19,163,163,.85)}
+.cli .bp:active{background:var(--teal-d)}
+.cli .bg{flex:none;min-width:48px;min-height:44px;border-radius:11px;border:1.5px solid var(--line);background:#fff;color:var(--navy);font-size:16px}
+.cli .bg:active{background:#f3f7fa}
+.endnote{text-align:center;font-size:12px;color:var(--mut);margin:16px 10px 0;line-height:1.5}
+
+/* call card */
+.call{background:var(--card);border-radius:15px;box-shadow:var(--shadow);border:1px solid #eef3f7;margin-bottom:10px;width:100%;text-align:left;display:block;padding:13px 14px}
+.call .r1{display:flex;align-items:center;gap:8px}
+.call .nm{font-size:15px;font-weight:800}
+.call .meta{font-size:11.5px;color:var(--mut);font-weight:600;margin-top:3px}
+.call .sc{margin-left:auto;font-size:13px;font-weight:900;width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;flex:none}
+.call .sc.g{background:var(--green-bg);color:var(--green)} .call .sc.a{background:var(--amber-bg);color:var(--amber)} .call .sc.k{background:var(--slate-bg);color:#5f6e7c;font-size:16px}
+.call .st{font-size:11.5px;font-weight:700;margin-top:7px;display:inline-flex;align-items:center;gap:5px}
+.call .st.ok{color:var(--green)} .call .st.kk{color:#5f6e7c}
+
+/* quality week panel (calls) */
+.qw{background:var(--card);border:1px solid #eef3f7;border-radius:16px;box-shadow:var(--shadow);padding:13px 14px;margin-bottom:14px;position:relative;overflow:hidden}
+.qw:before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:var(--teal)}
+.qw .qh{font-size:13.5px;font-weight:800;display:flex;align-items:center;gap:7px;margin-bottom:11px}
+.qw .qh small{font-weight:600;font-size:11px;color:var(--mut);margin-left:auto}
+.qg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.qm{background:#f5f8fa;border-radius:11px;padding:9px 10px}
+.qm .qn{font-size:18px;font-weight:900;letter-spacing:-.02em;display:flex;align-items:baseline;gap:6px}
+.qm .qn .du{font-size:11px;font-weight:800;color:var(--green)} .qm .qn .dd{font-size:11px;font-weight:800;color:var(--red)}
+.qm .ql{font-size:10.5px;color:var(--mut);font-weight:700;margin-top:3px;line-height:1.3}
+.qm .qp{font-size:10.5px;color:var(--mut);font-weight:600;margin-top:2px}
+.qfoc{display:flex;gap:8px;align-items:center;background:var(--navy);color:#dce7f0;border-radius:11px;padding:9px 11px;margin-top:9px;font-size:12.5px;font-weight:600}
+.qfoc b{color:#fff} .qfoc .ic{flex:none}
+
+/* money */
+.mstates{display:flex;gap:8px;margin-bottom:6px}
+.mst{flex:1;background:var(--card);border:1px solid #eef3f7;border-radius:14px;padding:12px 9px;box-shadow:var(--shadow)}
+.mst .l{font-size:10.5px;color:var(--mut);font-weight:700;line-height:1.25;min-height:26px}
+.mst .v{font-size:16.5px;font-weight:900;letter-spacing:-.02em;margin-top:5px}
+.mst.a .v{color:var(--green)} .mst.b .v{color:var(--amber)} .mst.c .v{color:var(--teal-d)}
+.plan{background:var(--card);border:1px solid #eef3f7;border-radius:16px;box-shadow:var(--shadow);padding:15px 16px;margin:14px 0}
+.plan .pt{font-size:13.5px;font-weight:700;color:var(--ink);display:flex;align-items:center;gap:8px}
+.plan .pt b{color:var(--amber)}
+.plan .bar{height:11px;border-radius:7px;background:#eef2f6;margin:11px 0 7px;overflow:hidden;position:relative}
+.plan .bar i{position:absolute;inset:0;border-radius:7px;background:linear-gradient(90deg,var(--amber),#eaa64a)}
+.plan .pl{display:flex;justify-content:space-between;font-size:11.5px;color:var(--mut);font-weight:700}
+
+/* what-if */
+.whatif{background:var(--card);border:1px solid #eef3f7;border-radius:18px;box-shadow:var(--shadow);padding:16px;margin-top:6px;position:relative;overflow:hidden}
+.whatif:before{content:"";position:absolute;inset:0 0 auto 0;height:5px;background:var(--gold)}
+.whatif .wt{font-size:15px;font-weight:800;display:flex;align-items:center;gap:8px}
+.whatif .wq{font-size:12.5px;color:var(--mut);font-weight:600;margin:3px 0 14px}
+.wlab{font-size:12.5px;font-weight:700;color:var(--ink);display:flex;justify-content:space-between;margin-top:14px}
+.wlab b{color:var(--teal-d);font-size:14px}
+input[type=range]{width:100%;height:40px;accent-color:var(--teal);background:transparent;margin-top:2px}
+.toggle{display:flex;gap:8px;margin-top:9px}
+.toggle button{flex:1;min-height:44px;border:1.5px solid var(--line);border-radius:11px;background:#fff;font-weight:700;font-size:13px;color:var(--navy)}
+.toggle button.on{background:var(--teal);color:#fff;border-color:var(--teal)}
+.bonusbox{background:linear-gradient(135deg,var(--navy),#0a2235);border-radius:15px;padding:16px;margin-top:16px;text-align:center;color:#fff}
+.bonusbox .bl{font-size:12px;color:#9fbace;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.bonusbox .bv{font-size:34px;font-weight:900;letter-spacing:-.02em;color:var(--gold);margin:4px 0 2px}
+.bonusbox .bf{font-size:11.5px;color:#b9cad9;font-weight:600;line-height:1.4}
+.obsbar{background:var(--slate-bg);border-radius:12px;padding:11px 13px;margin-top:13px;font-size:12px;color:#41515f;font-weight:600;line-height:1.5;display:flex;gap:8px}
+.obsbar b{color:var(--navy)}
+
+/* score (compact KPI) */
+.hero{background:var(--card);border-radius:18px;padding:18px;box-shadow:var(--shadow);border:1px solid #eef3f7;position:relative;overflow:hidden;margin-bottom:13px}
+.hero:before{content:"";position:absolute;inset:0 0 auto 0;height:5px;background:var(--amber)}
+.hero .hl{font-size:12px;color:var(--mut);font-weight:700;text-transform:uppercase;letter-spacing:.04em;display:flex;align-items:center;gap:8px}
+.hero .pilot{font-size:10px;font-weight:800;color:#8a5a14;background:var(--amber-bg);border-radius:7px;padding:2px 7px;text-transform:none}
+.hero .big{font-size:52px;font-weight:900;line-height:.95;letter-spacing:-.03em;margin:5px 0 2px;color:var(--amber)}
+.hero .big span{font-size:22px}
+.hero .plan2{font-size:13.5px;color:var(--ink);font-weight:600}
+.drow{background:var(--card);border:1px solid #eef3f7;border-radius:14px;box-shadow:var(--shadow);padding:12px 14px;margin-bottom:9px;display:flex;align-items:center;gap:11px}
+.drow .dn{font-size:13.5px;font-weight:700;flex:1}
+.drow .dn small{display:block;color:var(--mut);font-weight:600;font-size:11.5px}
+.drow .dv{font-size:17px;font-weight:900;letter-spacing:-.02em}
+.drow .tag{font-size:9.5px;font-weight:800;border-radius:6px;padding:1px 6px}
+.tag.live{background:var(--green-bg);color:var(--green)} .tag.obs{background:var(--slate-bg);color:#5f6e7c}
+.gatesrow{background:var(--card);border:1px solid #eef3f7;border-radius:14px;box-shadow:var(--shadow);padding:12px 14px;margin-top:4px;font-size:13px;font-weight:700;display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.gatesrow .g{display:inline-flex;align-items:center;gap:5px;color:var(--green);font-size:12.5px}
+.salnote{background:#0e2a40;color:#dce7f0;border-radius:14px;padding:13px 15px;margin-top:11px;font-size:12.5px;line-height:1.55}
+.salnote b{color:var(--gold)}
+
+/* tabbar */
+.tabbar{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:468px;background:#fff;border-top:1px solid #e2e9ef;display:flex;z-index:30;padding:6px 4px calc(6px + env(safe-area-inset-bottom))}
+.tabbar button{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 2px;color:var(--mut);font-size:10.5px;font-weight:700;border-radius:12px}
+.tabbar button .i{font-size:20px;line-height:1}
+.tabbar button.on{color:var(--teal-d)}
+.tabbar button.on .i{transform:translateY(-1px)}
+.tabbar button .badge{position:absolute;margin-top:-4px;margin-left:14px;background:var(--red);color:#fff;font-size:9px;font-weight:800;border-radius:8px;padding:0 5px;line-height:15px}
+
+/* sheet */
+.scrim{position:fixed;inset:0;background:rgba(14,42,64,.5);opacity:0;pointer-events:none;transition:opacity .22s;z-index:40}
+.scrim.on{opacity:1;pointer-events:auto}
+.sheet{position:fixed;left:0;right:0;bottom:0;max-width:468px;margin:0 auto;background:var(--card);border-radius:24px 24px 0 0;padding:8px 18px calc(20px + env(safe-area-inset-bottom));z-index:41;transform:translateY(110%);transition:transform .28s cubic-bezier(.22,1,.36,1);box-shadow:0 -10px 40px -10px rgba(14,42,64,.4);max-height:90vh;overflow:auto}
+.sheet.on{transform:none}
+.grab{width:42px;height:5px;border-radius:3px;background:#dbe3ea;margin:8px auto 14px}
+.sheet h3{font-size:18px;font-weight:800;display:flex;align-items:center;gap:8px}
+.sheet .sub{font-size:12.5px;color:var(--mut);font-weight:600;margin:3px 0 14px}
+.sm{font-size:14px;line-height:1.5;background:#f5f8fa;border-radius:12px;padding:12px 13px;color:var(--ink);margin-bottom:14px}
+.fb{border-radius:12px;padding:11px 13px;margin-bottom:9px;font-size:13.5px;line-height:1.5}
+.fb.good{background:var(--green-bg);color:#176b3c} .fb.miss{background:var(--amber-bg);color:#8a5a14} .fb.next{background:var(--blue-bg);color:#274a72}
+.fb b{display:block;margin-bottom:2px}
+.checks{display:flex;flex-wrap:wrap;gap:7px;margin:4px 0 14px}
+.chk{font-size:12px;font-weight:700;border-radius:9px;padding:5px 9px;display:inline-flex;align-items:center;gap:5px}
+.chk.y{background:var(--green-bg);color:var(--green)} .chk.n{background:var(--red-bg);color:var(--red)}
+.metrics{display:flex;gap:8px;margin-bottom:14px}
+.metrics .m{flex:1;background:#f5f8fa;border-radius:11px;padding:9px;text-align:center}
+.metrics .m .mv{font-size:17px;font-weight:900;color:var(--navy)}
+.metrics .m .ml{font-size:10.5px;color:var(--mut);font-weight:700;margin-top:2px}
+.moments{display:flex;flex-direction:column;gap:7px;margin-bottom:8px}
+.moments .mo{display:flex;align-items:center;gap:9px;font-size:13px;font-weight:600;border:1px solid var(--line);border-radius:10px;padding:9px 11px}
+.moments .mo .t{font-weight:800;color:var(--teal-d);font-variant-numeric:tabular-nums}
+.closeb{width:100%;min-height:var(--tap);border-radius:13px;background:var(--teal);color:#fff;font-size:15px;font-weight:800;margin-top:8px;box-shadow:0 6px 16px -7px rgba(19,163,163,.85)}
+.closeb:active{background:var(--teal-d)}
+.kkbox{background:var(--slate-bg);border-radius:12px;padding:14px;font-size:13.5px;line-height:1.55;color:#41515f;margin-bottom:14px}
+.kkbox b{color:var(--navy)}
+
+/* toast */
+.toast{position:fixed;left:16px;right:16px;bottom:84px;max-width:436px;margin:0 auto;background:var(--navy);color:#fff;border-radius:14px;padding:13px 16px;font-size:13.5px;font-weight:600;display:flex;align-items:center;gap:10px;z-index:50;opacity:0;visibility:hidden;transform:translateY(16px);transition:opacity .25s,transform .3s cubic-bezier(.22,1,.36,1),visibility .25s;box-shadow:var(--shadow)}
+.toast.on{opacity:1;visibility:visible;transform:none}
+.toast .tk{width:24px;height:24px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;flex:none;font-size:13px}
+
+/* progress / геймификация */
+.mstreak{display:flex;align-items:center;gap:11px;background:linear-gradient(135deg,#fff,#fff7ea);border:1px solid #eef3f7;border-radius:14px;box-shadow:var(--shadow);padding:12px 14px;margin-bottom:14px}
+.mstreak .fire{font-size:24px;flex:none}
+.mstreak b{color:var(--amber)}
+.mstreak .dots{margin-left:auto;display:flex;gap:3px;flex-wrap:wrap;max-width:96px;justify-content:flex-end}
+.mstreak .dots i{width:8px;height:8px;border-radius:50%;background:var(--amber)}
+.mstreak .dots i.off{background:#e6ecf2}
+.prow{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid #eef3f7;border-radius:13px;box-shadow:var(--shadow);padding:12px 14px;margin-bottom:9px}
+.prow .pn{font-size:13.5px;font-weight:700;flex:1;line-height:1.3}
+.prow .pn small{display:block;color:var(--mut);font-weight:600;font-size:11px}
+.prow .pv{font-size:18px;font-weight:900;letter-spacing:-.01em}
+.delta{font-size:11px;font-weight:800;border-radius:7px;padding:3px 7px;white-space:nowrap}
+.delta.up{background:var(--green-bg);color:var(--green)} .delta.dn{background:var(--red-bg);color:var(--red)}
+.coincard{background:var(--card);border:1px solid #eef3f7;border-radius:16px;box-shadow:var(--shadow);padding:15px 16px;margin-bottom:13px}
+.coincard .cc{font-size:30px;font-weight:900;color:var(--gold);letter-spacing:-.02em;line-height:1}
+.cbar{height:10px;border-radius:7px;background:#eef2f6;margin-top:10px;overflow:hidden;position:relative}
+.cbar i{position:absolute;inset:0;border-radius:7px;background:linear-gradient(90deg,var(--amber),#eaa64a)}
+.coinways{display:flex;flex-wrap:wrap;gap:6px;margin:11px 0 4px}
+.coinways .cw{font-size:11.5px;font-weight:700;background:var(--amber-bg);color:#8a5a14;border-radius:9px;padding:5px 9px}
+.celebrate{background:linear-gradient(135deg,var(--navy),#0a2235);border-radius:16px;padding:18px;text-align:center;color:#fff;margin-bottom:13px}
+.celebrate .ce{font-size:30px;line-height:1}
+.celebrate .cv{font-size:15.5px;font-weight:800;color:var(--gold);margin:7px 0 4px;line-height:1.3}
+.celebrate .cf{font-size:12px;color:#b9cad9;font-weight:600;margin-bottom:12px}
+.skillm{background:var(--card);border:1px solid #eef3f7;border-left:5px solid var(--gold);border-radius:16px;box-shadow:var(--shadow);padding:15px 16px}
+.skillm .sg{font-size:15px;font-weight:800;color:var(--navy);margin:2px 0 6px}
+.skillm .sx{font-size:13px;color:var(--ink);line-height:1.5}
+.skillm .sx b{color:var(--teal-d)}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="prevbadge">ПРЕДПРОСМОТР · демо-данные, имена вымышленные · Telegram Mini App</div>
+  <header class="tg">
+    <div class="logo">⚡</div>
+    <div class="ttl">Напарник<small>Динара · отдел продаж</small></div>
+    <div class="av">Д</div>
+  </header>
+
+  <!-- ===== ДЕНЬ ===== -->
+  <section class="wrap on" id="s-day">
+    <div class="daterow">Вторник, 5 июня</div>
+    <div class="focus"><span class="ic">🎯</span><span>Фокус недели: <b>дожать 3 показа</b>. Сегодня важнее всего — вернуть остывших после показа.</span></div>
+    <div class="stats">
+      <div class="stat cool"><div class="n">2</div><div class="l">показа сегодня</div></div>
+      <div class="stat warm"><div class="n">4</div><div class="l">недозвона</div></div>
+      <div class="stat hot"><div class="n">3</div><div class="l">остывают</div></div>
+    </div>
+
+    <div class="sh">Сейчас займись <small>по важности</small></div>
+    <div id="cliList"></div>
+    <div class="endnote">Список пересобирается сам по сигналам из CRM — сверху всегда то, что важнее.</div>
+  </section>
+
+  <!-- ===== ЗВОНКИ ===== -->
+  <section class="wrap" id="s-calls">
+    <div class="daterow">Звонки сегодня · разбор готов автоматически</div>
+    <div class="focus" style="background:var(--blue-bg);color:#274a72"><span class="ic">🎧</span><span>После каждого звонка — <b style="color:#1b3a5e">разбор за 90 секунд</b>: что хорошо, что упустил, что сделать дальше. Без переслушивания.</span></div>
+
+    <div class="qw">
+      <div class="qh">📈 Качество · неделя<small>тренд к прошлой</small></div>
+      <div class="qg">
+        <div class="qm"><div class="qn">4,3 <span class="du">▲</span></div><div class="ql">Средняя ОКК (1–5)</div><div class="qp">пр. неделя 4,0</div></div>
+        <div class="qm"><div class="qn">58% <span class="du">▼</span></div><div class="ql">Доля речи · норма ≤55%</div><div class="qp">было 63%</div></div>
+        <div class="qm"><div class="qn">5 <span class="du">▲</span></div><div class="ql">Вопросов / звонок</div><div class="qp">было 4</div></div>
+        <div class="qm"><div class="qn">72% <span class="du">▲</span></div><div class="ql">Чек-лист пройден</div><div class="qp">было 64%</div></div>
+      </div>
+      <div class="qfoc"><span class="ic">🎯</span><span>Фокус недели: <b>Закрытие на дату показа (КЭВ)</b></span></div>
+    </div>
+
+    <div id="callList"></div>
+
+    <div class="sh">Методика звонка · КЭВ <small>по Гребенюку</small></div>
+    <div class="call" style="cursor:default">
+      <div style="font-size:12.5px;font-weight:700;color:var(--navy);background:#f5f8fa;border-radius:10px;padding:9px 11px;line-height:1.6">Контакт → Рамка → 3 вопроса ABC → Боль → Презентация → <b style="color:var(--teal-d)">Закрытие на КЭВ</b></div>
+      <div style="font-size:12.5px;line-height:1.6;color:var(--ink);margin-top:10px"><b>3 вопроса:</b> для кого / какая задача · когда решение · комфортный платёж (ипотека/рассрочка)</div>
+      <div style="font-size:12.5px;line-height:1.55;color:var(--ink);margin-top:8px"><b>Оффер на показ:</b> не «приходите посмотреть» → «2–3 варианта под задачу + расчёт условий + маршрут».</div>
+      <div style="font-size:12.5px;line-height:1.6;color:var(--ink);margin-top:8px"><b>Возражение (4 шага):</b> согласиться → уточнить → локализовать → вернуть к следующему шагу. Без давления.</div>
+    </div>
+    <div class="endnote">Звонки на казахском авто-разбор не получают — распознавание ненадёжно, их слушает РОП вручную.</div>
+  </section>
+
+  <!-- ===== ДЕНЬГИ ===== -->
+  <section class="wrap" id="s-money">
+    <div class="daterow">Деньги · июнь · по Положению о премировании ТМ</div>
+    <div class="mstates">
+      <div class="mst a"><div class="l">Бонус начислен</div><div class="v">68 000&nbsp;₸</div></div>
+      <div class="mst b"><div class="l">Ждёт верификации СВ</div><div class="v">12 000&nbsp;₸</div></div>
+      <div class="mst c"><div class="l">Прогноз к концу мес.</div><div class="v">≈95 000&nbsp;₸</div></div>
+    </div>
+
+    <div class="plan">
+      <div class="pt">📋 План по встречам: <b>34&nbsp;/&nbsp;45</b> · 76% · порог ≥60% пройден</div>
+      <div class="bar"><i style="width:76%"></i></div>
+      <div class="pl"><span>факт 34 визита</span><span>до 100% плана — 11</span></div>
+    </div>
+
+    <div class="whatif">
+      <div class="wt">🧮 Прикинь свой бонус</div>
+      <div class="wq">Бонус = ставка за встречу (зависит от твоей конверсии) × число встреч</div>
+
+      <div class="wlab"><span>Моя конверсия (встречи ÷ лиды)</span><b id="wConvL">22%</b></div>
+      <input type="range" id="wConv" min="0" max="60" value="22" step="1" aria-label="Конверсия, процент">
+      <div id="tierL" style="font-size:12.5px;font-weight:700;color:var(--teal-d);margin-top:4px">—</div>
+
+      <div class="wlab" style="margin-top:14px"><span>Проведено встреч за месяц</span><b id="wVisL">30</b></div>
+      <input type="range" id="wVis" min="0" max="60" value="30" step="1" aria-label="Встреч за месяц">
+
+      <div class="wlab" style="margin-top:12px"><span>Продажи (акселератор за класс)</span></div>
+      <div class="toggle" id="wClass">
+        <button class="on" data-v="5000" onclick="pick(this,'wClass')">Комфорт +5к</button>
+        <button data-v="10000" onclick="pick(this,'wClass')">Бизнес +10к</button>
+      </div>
+      <input type="range" id="wSales" min="0" max="6" value="2" step="1" style="margin-top:6px" aria-label="Продаж за месяц">
+      <div id="salesL" style="font-size:12px;color:var(--mut);font-weight:600">—</div>
+
+      <div class="bonusbox">
+        <div class="bl">Твой бонус за месяц</div>
+        <div class="bv" id="bonusV">≈ 60 000 ₸</div>
+        <div class="bf" id="bonusF">—</div>
+      </div>
+
+      <div class="obsbar">🛡️ <span><b>Гейт:</b> бонус не платится при плане &lt;60% <b>или</b> CRM-дисциплине &lt;90%. <b>Качество ОКК</b> двигает бонус: ≥4,8 +50к · 3,5–3,99 −20% · &lt;3,5 −30%. Оклад от бонуса не зависит.</span></div>
+    </div>
+  </section>
+
+  <!-- ===== СЧЁТ (KPI по Положению) ===== -->
+  <section class="wrap" id="s-score">
+    <div class="card" id="liveDept" style="display:none;background:var(--card);border:1px solid #eef3f7;border-radius:16px;box-shadow:var(--shadow);padding:14px 15px;margin-bottom:13px">
+      <div style="font-size:13.5px;font-weight:800;display:flex;align-items:center;gap:7px">📡 Live · департамент <small id="ldPeriod" style="font-weight:600;color:var(--mut);margin-left:auto">—</small></div>
+      <div style="display:flex;gap:8px;margin-top:10px">
+        <div class="mst"><div class="l">обработано</div><div class="v" id="ldWorked">—</div></div>
+        <div class="mst"><div class="l">визиты cat2</div><div class="v" id="ldVisits">—</div></div>
+        <div class="mst"><div class="l">звонков</div><div class="v" id="ldCalls">—</div></div>
+      </div>
+      <div style="font-size:11px;color:var(--mut);font-weight:600;margin-top:9px;line-height:1.5">Реальные данные Bitrix (наблюдение). Per-manager конверсия/премия — data-blocked (нужен фикс данных).</div>
+    </div>
+    <div class="daterow">Мой KPI · июнь · по Положению о премировании ТМ <span id="kpiSrcBadge" style="font-size:9.5px;font-weight:800;border-radius:7px;padding:2px 7px;background:var(--slate-bg);color:#5f6e7c;letter-spacing:0">данные: демо</span></div>
+    <div class="hero">
+      <div class="hl">Моя конверсия (встречи ÷ лиды) <span class="pilot" id="kConvTier">тариф бонуса</span></div>
+      <div class="big"><span id="kConv">16</span><span>%</span></div>
+      <div class="plan2">Тариф <b style="color:var(--amber)">2 000 ₸</b>/встреча. Подними конверсию до <b>25%</b> — тариф станет <b>3 500 ₸</b>.</div>
+    </div>
+    <div class="drow"><div class="dn">План по встречам<small>гейт ≥60%</small></div><div class="dv" style="color:var(--green)" id="kPlan">76%</div><span class="tag live">✓ пройден</span></div>
+    <div class="drow"><div class="dn">CRM-дисциплина<small>гейт ≥90%</small></div><div class="dv" style="color:var(--green)" id="kCrm">92%</div><span class="tag live">✓ пройден</span></div>
+    <div class="drow"><div class="dn">Успешные звонки / день<small>норма ≥30</small></div><div class="dv" style="color:var(--green)" id="kCalls">34</div><span class="tag live">✓</span></div>
+    <div class="drow"><div class="dn">Качество ОКК (1–5)<small>≥4,8 +50к · &lt;3,5 −30%</small></div><div class="dv" style="color:var(--amber)">4,3</div><span class="tag obs">нейтр.</span></div>
+    <div class="gatesrow">🛡️ Бонус начисляется: <span class="g">✓ план ≥60%</span><span class="g">✓ CRM ≥90%</span></div>
+    <div class="salnote">💼 Оклад <b>гарантирован</b> (грейд «Менеджер»). Бонус = ставка по конверсии × встречи, сверху. Визиты подтверждает <b>супервайзер</b> (прозвон ≥10 клиентов/нед) — независимо от тебя.</div>
+  </section>
+
+  <!-- ===== ПРОГРЕСС / ИГРА ===== -->
+  <section class="wrap" id="s-progress">
+    <div class="daterow">Твой рост · июнь</div>
+
+    <div class="mstreak">
+      <span class="fire">🔥</span>
+      <div>
+        <div style="font-size:14px;font-weight:800">В темпе плана <b>12 дней</b> подряд</div>
+        <div style="font-size:11.5px;color:var(--mut);font-weight:600">Сегодня осталось 2 показа</div>
+      </div>
+      <div class="dots" id="streakDots"></div>
+    </div>
+
+    <div class="sh">Ты vs прошлый месяц <small>растёшь по всем</small></div>
+    <div id="progRows"></div>
+
+    <div class="sh">Коины и призы</div>
+    <div class="coincard">
+      <div style="display:flex;align-items:baseline;gap:8px"><span class="cc">480</span><span style="font-size:13px;color:var(--mut);font-weight:700">/ 600 до приза</span></div>
+      <div class="cbar"><i style="width:80%"></i></div>
+      <div style="font-size:12px;color:var(--mut);font-weight:600;margin-top:8px">До награды «доп. выходной» — <b style="color:var(--ink)">120 коинов</b></div>
+      <div class="coinways"><span class="cw">Показ +20</span><span class="cw">КЭВ +15</span><span class="cw">Дожатый клиент +50</span></div>
+      <div style="font-size:11px;color:var(--mut);font-weight:600;margin-top:6px;line-height:1.5">Коины — за результат (показы, дожим), не за число звонков.</div>
+    </div>
+
+    <div class="celebrate">
+      <div class="ce">🎊</div>
+      <div class="cv">Сделка закрыта — ЖК Аура, 2-комн.</div>
+      <div class="cf">Третья сделка за месяц. Так держать!</div>
+      <button class="closeb" onclick="toast('🎉 Закрытие отмечено — +50 коинов!')">🎈 Отметить закрытие</button>
+    </div>
+
+    <div class="sh">Точка роста недели <small>из разбора звонков</small></div>
+    <div class="skillm">
+      <div class="sg">Закрытие на конкретную дату показа (КЭВ)</div>
+      <div class="sx">В <b>2 из 3</b> разобранных звонков не зафиксирована дата визита — твой главный рычаг конверсии. <b>Микро-действие:</b> в конце разговора называй день и время, а не «приходите посмотреть».</div>
+      <button class="closeb" style="margin-top:12px" onclick="toast('▶️ Урок 2 мин: как закрывать на конкретную дату показа')">▶️ Урок 2 минуты</button>
+    </div>
+
+    <div class="endnote">Растём от своей прошлой планки, а не в чужом рейтинге.</div>
+  </section>
+
+  <!-- tabbar -->
+  <nav class="tabbar">
+    <button class="on" id="t-day" onclick="go('day')"><span class="i">📋</span>День</button>
+    <button id="t-calls" onclick="go('calls')"><span class="i">🎧</span>Звонки</button>
+    <button id="t-money" onclick="go('money')"><span class="i">💰</span>Деньги</button>
+    <button id="t-score" onclick="go('score')"><span class="i">📊</span>Счёт</button>
+    <button id="t-progress" onclick="go('progress')"><span class="i">🎮</span>Рост</button>
+  </nav>
+</div>
+
+<!-- sheets -->
+<div class="scrim" id="scrim" onclick="closeSheet()"></div>
+
+<div class="sheet" id="sheet-call" role="dialog" aria-modal="true">
+  <div class="grab"></div>
+  <h3 id="cTitle">🎧 Звонок за 90 секунд</h3>
+  <div class="sub" id="cSub">—</div>
+  <div class="sm" id="cSummary">—</div>
+  <div class="fb good"><b>✅ Что получилось</b><span id="cGood">—</span></div>
+  <div class="fb miss"><b>⚠️ Что упустил</b><span id="cMiss">—</span></div>
+  <div class="fb next"><b>→ Что сделать дальше</b><span id="cNext">—</span></div>
+  <div style="font-size:11.5px;font-weight:800;color:var(--mut);text-transform:uppercase;letter-spacing:.04em;margin:4px 2px 7px">Чек-лист звонка</div>
+  <div class="checks" id="cChecks"></div>
+  <div class="metrics" id="cMetrics"></div>
+  <div style="font-size:11.5px;font-weight:800;color:var(--mut);text-transform:uppercase;letter-spacing:.04em;margin:0 2px 7px">Горящие моменты</div>
+  <div class="moments" id="cMoments"></div>
+  <button class="closeb" onclick="closeSheet()">Понятно</button>
+</div>
+
+<div class="sheet" id="sheet-kk" role="dialog" aria-modal="true">
+  <div class="grab"></div>
+  <h3>🗣️ Звонок на казахском</h3>
+  <div class="sub">Авто-разбор не делаем — честно</div>
+  <div class="kkbox">Распознавание казахской (и смешанной рус/каз) речи пока ненадёжное. Показывать тебе «оценку», построенную на битой расшифровке, было бы враньём. <br><br><b>Этот звонок послушает РОП вручную</b> и даст обратную связь лично. Авто-разбор по таким звонкам подключим, когда распознавание дозреет.</div>
+  <button class="closeb" onclick="closeSheet()">Понятно</button>
+</div>
+
+<div class="toast" id="toast"><span class="tk">✓</span><span id="toastMsg">Готово</span></div>
+
+<script>
+/* ---------- tabs ---------- */
+function go(t){
+  document.querySelectorAll('.wrap').forEach(function(w){w.classList.remove('on');});
+  document.getElementById('s-'+t).classList.add('on');
+  document.querySelectorAll('.tabbar button').forEach(function(b){b.classList.remove('on');});
+  document.getElementById('t-'+t).classList.add('on');
+  document.querySelector('.app').scrollIntoView({block:'start'});
+  window.scrollTo(0,0);
+}
+
+/* ---------- ДЕНЬ: priority clients ---------- */
+var clients=[
+  {nm:'Айгерим С.', jk:'Аура', heat:'hot', ic:'🔥', why:'Была на показе <b>5 дней назад</b> — и тишина. Остывает.', a:'Позвонить'},
+  {nm:'Руслан М.', jk:'Керуен', heat:'hot', ic:'🔥', why:'Заходил на сайт ЖК <b>3 раза за вчера</b> — горячий.', a:'Позвонить'},
+  {nm:'Данияр Т.', jk:'Аура', heat:'warm', ic:'🟠', why:'Обещал ему <b>расчёт рассрочки</b> — ещё не отправлен.', a:'Отправить расчёт'},
+  {nm:'Гульнара А.', jk:'Атмосфера', heat:'warm', ic:'🟠', why:'<b>Недозвон ×2</b> утром. Попробуй вечернее окно.', a:'Позвонить'},
+  {nm:'Ержан К.', jk:'Атмосфера', heat:'cool', ic:'🟢', why:'<b>Показ сегодня 16:00.</b> Подтверди за 2 часа — доходимость выше.', a:'Подтвердить показ'}
+];
+function renderCli(){
+  var h='';
+  clients.forEach(function(c,i){
+    h+='<div class="cli '+c.heat+'"><div class="in">'+
+       '<div class="r1"><span class="nm">'+c.nm+'</span><span class="jk">ЖК '+c.jk+'</span><span class="heat">'+c.ic+'</span></div>'+
+       '<div class="why">'+c.why+'</div>'+
+       '<div class="acts"><button class="bp" onclick="act(\''+c.a+'\',\''+c.nm+'\')">📞 '+c.a+'</button>'+
+       '<button class="bg" onclick="act(\'Отложить\',\''+c.nm+'\')">⏰</button></div>'+
+       '</div></div>';
+  });
+  document.getElementById('cliList').innerHTML=h;
+}
+function act(a,nm){ toast(a==='Отложить'?('Отложил «'+nm+'» на вечер'):('«'+a+'» по клиенту '+nm+' — пошло')); }
+
+/* ---------- ЗВОНКИ ---------- */
+var calls=[
+ {id:'c1', nm:'Айгерим С.', jk:'Аура', dur:'7:12', time:'11:40', lang:'ru', score:'4,3', sc:'a',
+  summary:'Выбирает 2-комнатную в Ауре <b>до 28 млн</b>, важны срок сдачи и школа во дворе. Согласилась на показ — но точную дату не зафиксировали.',
+  good:'Хорошо выявил бюджет и состав семьи, презентовал под «школа рядом».',
+  miss:'Не назвал точный срок сдачи; не закрыл на конкретную дату показа.',
+  next:'Перезвони сегодня, предложи показ в чт/пт и назови срок сдачи (4 кв 2026).',
+  checks:[['Бюджет',1],['Состав семьи',1],['Срок сдачи',0],['Дата показа (КЭВ)',0]],
+  talk:64, q:6, mono:'1:40',
+  moments:[['02:14','обсуждение цены'],['04:50','вопрос про ипотеку'],['06:30','«я подумаю»']]},
+ {id:'c2', nm:'Руслан М.', jk:'Керуен', dur:'4:30', time:'10:15', lang:'ru', score:'4,6', sc:'g',
+  summary:'Инвестор, смотрит студии в Керуене под сдачу. Интересует рассрочка и ликвидность. Тёплый, но сравнивает с конкурентом.',
+  good:'Быстро вышел на задачу (инвестиция), назвал доходность аренды.',
+  miss:'Не отработал сравнение с конкурентом; не предложил следующий шаг.',
+  next:'Отправь расчёт рассрочки + сравнение по цене за м², закрой на показ.',
+  checks:[['Задача (инвест)',1],['Доходность',1],['Отработка конкурента',0],['Следующий шаг',0]],
+  talk:58, q:4, mono:'1:05',
+  moments:[['01:30','цель — аренда'],['03:10','конкурент'],['04:05','рассрочка']]},
+ {id:'c3', nm:'Ержан К.', jk:'Атмосфера', dur:'5:50', time:'09:30', lang:'kk'}
+];
+function renderCalls(){
+  var h='';
+  calls.forEach(function(c){
+    if(c.lang==='kk'){
+      h+='<button class="call" onclick="openKK()"><div class="r1"><span class="nm">'+c.nm+'</span><span class="sc k">🗣️</span></div>'+
+         '<div class="meta">ЖК '+c.jk+' · '+c.dur+' · '+c.time+'</div>'+
+         '<div class="st kk">⏳ на ручной проверке — звонок на казахском</div></button>';
+    }else{
+      h+='<button class="call" onclick="openCall(\''+c.id+'\')"><div class="r1"><span class="nm">'+c.nm+'</span>'+
+         '<span class="sc '+c.sc+'">'+c.score+'</span></div>'+
+         '<div class="meta">ЖК '+c.jk+' · '+c.dur+' · '+c.time+'</div>'+
+         '<div class="st ok">✅ разбор готов — нажми</div></button>';
+    }
+  });
+  document.getElementById('callList').innerHTML=h;
+}
+function openCall(id){
+  var c=calls.find(function(x){return x.id===id;});
+  document.getElementById('cTitle').textContent='🎧 '+c.nm+' · '+c.dur;
+  document.getElementById('cSub').textContent='ЖК '+c.jk+' · оценка ОКК '+c.score+' / 5';
+  document.getElementById('cSummary').innerHTML='<b>О чём говорили:</b> '+c.summary;
+  document.getElementById('cGood').textContent=c.good;
+  document.getElementById('cMiss').textContent=c.miss;
+  document.getElementById('cNext').textContent=c.next;
+  document.getElementById('cChecks').innerHTML=c.checks.map(function(k){
+    return '<span class="chk '+(k[1]?'y':'n')+'">'+(k[1]?'✓':'✗')+' '+k[0]+'</span>';}).join('');
+  document.getElementById('cMetrics').innerHTML=
+    '<div class="m"><div class="mv">'+c.talk+'%</div><div class="ml">доля речи<br>(норма ≤55%)</div></div>'+
+    '<div class="m"><div class="mv">'+c.q+'</div><div class="ml">вопросов<br>задал</div></div>'+
+    '<div class="m"><div class="mv">'+c.mono+'</div><div class="ml">длиннейший<br>монолог</div></div>';
+  document.getElementById('cMoments').innerHTML=c.moments.map(function(m){
+    return '<div class="mo"><span class="t">'+m[0]+'</span><span>'+m[1]+'</span></div>';}).join('');
+  show('sheet-call');
+}
+function openKK(){ show('sheet-kk'); }
+
+/* ---------- ДЕНЬГИ: what-if ---------- */
+function pick(btn,group){
+  document.querySelectorAll('#'+group+' button').forEach(function(b){b.classList.remove('on');});
+  btn.classList.add('on'); calcBonus();
+}
+function fmt(n){ return Math.round(n).toLocaleString('ru-RU').replace(/,/g,' '); }
+/* Реальная шкала из Положения о премировании ТМ (Раздел 4): ставка за встречу по тарифу конверсии */
+function rate(c){ if(c>=51)return 5000; if(c>=40)return 4000; if(c>=25)return 3500; if(c>=15)return 2000; if(c>=11)return 1500; if(c>=5)return 1000; return 0; }
+function tierLabel(c){ if(c>=51)return '>50%'; if(c>=40)return '40–49%'; if(c>=25)return '25–39%'; if(c>=15)return '15–24%'; if(c>=11)return '11–14%'; if(c>=5)return '5–10%'; return '<5%'; }
+function calcBonus(){
+  var conv=+document.getElementById('wConv').value;
+  var vis=+document.getElementById('wVis').value;
+  var sales=+document.getElementById('wSales').value;
+  var cls=+document.querySelector('#wClass button.on').dataset.v; // 5000 комфорт / 10000 бизнес
+  document.getElementById('wConvL').textContent=conv+'%';
+  document.getElementById('wVisL').textContent=vis;
+  var r=rate(conv);
+  document.getElementById('tierL').textContent = r>0
+    ? ('Ставка: '+fmt(r)+' ₸ за встречу (тариф '+tierLabel(conv)+')')
+    : ('Конверсия <5% — бонус за встречи не начисляется');
+  var acc = (cls===10000) ? sales*10000 : (sales>=3 ? sales*5000 : 0); // комфорт включается с 3-й продажи
+  var total = r*vis + acc;
+  document.getElementById('bonusV').textContent='≈ '+fmt(total)+' ₸';
+  document.getElementById('bonusF').textContent = fmt(r)+' ₸ × '+vis+' встреч'+(acc>0?(' + '+fmt(acc)+' за продажи'):'');
+  document.getElementById('salesL').textContent = (cls===10000)
+    ? ('Продаж: '+sales+' · бизнес +10к за каждую')
+    : ('Продаж: '+sales+' · комфорт +5к — с 3-й продажи'+(sales>=3?' (активно)':' (пока неактивно)'));
+}
+['wConv','wVis','wSales'].forEach(function(id){ document.getElementById(id).addEventListener('input',calcBonus); });
+
+/* ---------- sheets / toast ---------- */
+function show(id){ document.getElementById('scrim').classList.add('on'); document.getElementById(id).classList.add('on'); }
+function closeSheet(){ document.getElementById('scrim').classList.remove('on'); document.querySelectorAll('.sheet').forEach(function(s){s.classList.remove('on');}); }
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeSheet();});
+var tT;
+function toast(m){ document.getElementById('toastMsg').textContent=m; var t=document.getElementById('toast'); t.classList.add('on'); clearTimeout(tT); tT=setTimeout(function(){t.classList.remove('on');},3200); }
+
+/* ПРОГРЕСС / ИГРА */
+var progress=[
+  {n:'Конверсия (встречи ÷ лиды)', sub:'твой тариф бонуса', now:'16%', d:'+3 п.п.'},
+  {n:'Проведено встреч', sub:'за месяц', now:'34', d:'+6'},
+  {n:'Содержательные разговоры', sub:'дозвон + квалификация', now:'64%', d:'+6 п.п.'},
+  {n:'Качество звонков (ОКК)', sub:'средняя по записям', now:'4,3', d:'+0,3'}
+];
+function renderProgress(){
+  document.getElementById('progRows').innerHTML=progress.map(function(p){
+    return '<div class="prow"><div class="pn">'+p.n+'<small>'+p.sub+'</small></div>'+
+      '<div class="pv">'+p.now+'</div><span class="delta up">▲ '+p.d+'</span></div>';
+  }).join('');
+  var dots=''; for(var i=0;i<14;i++){ dots+='<i class="'+(i<12?'':'off')+'"></i>'; }
+  document.getElementById('streakDots').innerHTML=dots;
+}
+
+renderCli(); renderCalls(); calcBonus(); renderProgress();
+
+/* ---------- СЧЁТ: грациозный data-layer (additive, fallback-safe) ----------
+   Тянет companion_metrics.json (выход read-only коннектора), берёт персону M-01
+   и обновляет ТОЛЬКО KPI на вкладке «Счёт». Любая ошибка/нет файла → демо-значения
+   остаются как есть, мокап работает как сейчас. ОКК/время не трогаем. */
+(function(){
+  var METRICS_URLS = ['companion_metrics.json','../integration/companion_metrics.json'];
+  function setTxt(id,v){ var el=document.getElementById(id); if(el!=null && v!=null && v!=='') el.textContent=v; }
+  function fetchFirst(urls,i){
+    i=i||0;
+    if(i>=urls.length) return Promise.reject(new Error('no metrics source'));
+    return fetch(urls[i]).then(function(r){
+      if(!r.ok) throw new Error('HTTP '+r.status);
+      return r.json();
+    }).catch(function(){ return fetchFirst(urls,i+1); });
+  }
+  function applyM01(data){
+    try{
+      if(!data || !Array.isArray(data.managers)) return;
+      var live=false, fmt=function(n){ return (typeof n==='number') ? n.toLocaleString('ru-RU').replace(/,/g,' ') : '—'; };
+      var m=data.managers.filter(function(x){return x && x.manager_id==='M-01';})[0];
+      if(m){
+        if(m.conversion_pct!=null) setTxt('kConv', Math.round(m.conversion_pct));
+        if(m.plan_pct!=null) setTxt('kPlan', Math.round(m.plan_pct)+'%');
+        if(m.crm_discipline_pct!=null) setTxt('kCrm', Math.round(m.crm_discipline_pct)+'%');
+        if(m.answered_calls!=null) setTxt('kCalls', m.answered_calls);
+        if(m.tier_band) setTxt('kConvTier', 'тариф · '+m.tier_band);
+        live=true;
+      }
+      if(data.department){
+        var dp=data.department;
+        setTxt('ldWorked', fmt(dp.processed_leads_worked));
+        setTxt('ldVisits', fmt(dp.visits_conducted_cat2_all_sources));
+        var calls=0; data.managers.forEach(function(x){ if(typeof x.answered_calls==='number') calls+=x.answered_calls; });
+        setTxt('ldCalls', fmt(calls));
+        if(data.period) setTxt('ldPeriod', (data.period.from||'')+' .. '+(data.period.to||''));
+        var ld=document.getElementById('liveDept'); if(ld) ld.style.display='block';
+        live=true;
+      }
+      if(live){ var b=document.getElementById('kpiSrcBadge'); if(b){ b.textContent='данные: live'; b.style.background='var(--green-bg)'; b.style.color='var(--green)'; } }
+    }catch(e){ /* fallback: демо-значения остаются */ }
+  }
+  try{
+    fetchFirst(METRICS_URLS).then(applyM01).catch(function(){ /* нет JSON → демо */ });
+  }catch(e){ /* fetch недоступен → демо */ }
+})();
+</script>
+</body>
+</html>

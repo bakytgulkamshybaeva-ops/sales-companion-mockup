@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Напарник продавца · мокапы</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0e2a40; --navy2:#143553; --teal:#13a3a3; --teal-d:#0d7e7e; --gold:#d9a441;
+  --bg:#eef2f6; --card:#fff; --ink:#16263a; --mut:#6b8095; --line:#e6ecf2;
+  --shadow:0 6px 22px -12px rgba(14,42,64,.30);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{color-scheme:light}
+body{font-family:'Archivo',-apple-system,'Segoe UI',sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.45;min-height:100vh}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:8px}
+
+.hero{background:linear-gradient(120deg,var(--navy),#0a2235);color:#fff;padding:34px 26px 30px}
+.hero .wrap{max-width:980px;margin:0 auto;display:flex;align-items:center;gap:14px}
+.hero .logo{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,var(--teal),var(--teal-d));display:flex;align-items:center;justify-content:center;font-weight:900;font-size:21px;flex:none;box-shadow:0 4px 12px -3px rgba(19,163,163,.7)}
+.hero .brand{font-weight:900;font-size:22px;letter-spacing:-.01em}
+.hero .brand small{font-weight:500;font-size:13px;color:#86a4bb;display:block;line-height:1.3;margin-top:3px}
+.hero .b24{margin-left:auto;font-size:12px;font-weight:700;color:#bfe6cf;background:rgba(31,157,87,.18);border:1px solid rgba(31,157,87,.4);border-radius:8px;padding:6px 12px;display:flex;align-items:center;gap:7px}
+.hero .b24 .d{width:8px;height:8px;border-radius:50%;background:#39d98a;box-shadow:0 0 8px #39d98a}
+
+.main{max-width:980px;margin:0 auto;padding:28px 26px 50px}
+.lead{font-size:14px;color:var(--mut);font-weight:600;margin-bottom:22px}
+.lead b{color:var(--ink)}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:20px 20px 18px;display:flex;flex-direction:column;gap:10px;transition:transform .18s ease,box-shadow .18s ease}
+.card:hover{transform:translateY(-3px);box-shadow:0 14px 30px -14px rgba(14,42,64,.42)}
+.card .ic{width:46px;height:46px;border-radius:13px;background:linear-gradient(135deg,var(--teal),var(--teal-d));display:flex;align-items:center;justify-content:center;font-size:23px;flex:none;box-shadow:0 5px 14px -6px rgba(19,163,163,.8)}
+.card .tt{font-size:16px;font-weight:800;letter-spacing:-.01em}
+.card .ds{font-size:13px;color:var(--mut);font-weight:600;line-height:1.5;flex:1}
+.card .go{font-size:13px;font-weight:800;color:var(--teal-d);display:flex;align-items:center;gap:6px}
+
+.demo{text-align:center;font-size:11px;color:var(--mut);margin-top:30px}
+
+@media(max-width:760px){.grid{grid-template-columns:1fr}.hero .b24{display:none}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="logo">⚡</div>
+    <div class="brand">Напарник продавца<small>кликабельные мокапы · отдел телемаркетинга</small></div>
+    <div class="b24"><span class="d"></span>Bitrix24 read-only</div>
+  </div>
+</header>
+
+<main class="main">
+  <div class="lead">Концепт-навигация. <b>Три точки входа для менеджера</b> + вид супервайзера (РОП).</div>
+
+  <div class="grid">
+    <a class="card" href="web.html">
+      <div class="ic">💻</div>
+      <div class="tt">Веб-кабинет</div>
+      <div class="ds">Встраивается в Bitrix24: мой день, разбор звонков, деньги, KPI, команда и прогресс в одном окне CRM.</div>
+      <div class="go">Открыть →</div>
+    </a>
+
+    <a class="card" href="mobile.html">
+      <div class="ic">📱</div>
+      <div class="tt">Мобайл · Telegram Mini App</div>
+      <div class="ds">Карманная версия напарника: задачи дня и подсказки прямо в Telegram, без входа в десктоп.</div>
+      <div class="go">Открыть →</div>
+    </a>
+
+    <a class="card" href="kpi.html">
+      <div class="ic">📊</div>
+      <div class="tt">Мой счёт (KPI)</div>
+      <div class="ds">Бонус, гейты и тариф за встречу: прозрачный расчёт по Положению о премировании.</div>
+      <div class="go">Открыть →</div>
+    </a>
+
+    <a class="card" href="rop.html">
+      <div class="ic">🧭</div>
+      <div class="tt">РОП · супервайзер</div>
+      <div class="ds">Управленческий слой: группа по риску, премия группы, очередь верификации визитов, пары. Наблюдательный режим на реальных данных.</div>
+      <div class="go">Открыть →</div>
+    </a>
+  </div>
+
+  <div class="demo">Демо · данные условные</div>
+</main>
+
+</body>
+</html>

@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0e2a40">
+<meta name="robots" content="noindex,nofollow">
+<title>Мой счёт · телемаркетинг — менеджер</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0e2a40; --navy2:#143553; --teal:#13a3a3; --teal-d:#0d7e7e; --gold:#d9a441;
+  --bg:#e7eef4; --card:#fff; --ink:#16263a; --mut:#6b8095; --line:#e6ecf2;
+  --green:#1f9d57; --green-bg:#e7f6ee; --amber:#e0922f; --amber-bg:#fdf2e1;
+  --red:#d6453d; --red-bg:#fcebe9; --blue:#3f6fb0; --blue-bg:#eaf1fa;
+  --slate:#8595a5; --slate-bg:#eef1f4;
+  --shadow:0 8px 26px -12px rgba(14,42,64,.32);
+  --tap:56px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{color-scheme:light;-webkit-text-size-adjust:100%}
+body{font-family:'Archivo',-apple-system,'Segoe UI',sans-serif;background:var(--bg);color:var(--ink);
+  -webkit-font-smoothing:antialiased;line-height:1.4}
+button{font-family:inherit;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:10px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+.app{max-width:468px;margin:0 auto;min-height:100vh;background:var(--bg);position:relative;
+  box-shadow:0 0 60px -20px rgba(14,42,64,.5)}
+@media(min-width:520px){.app{margin:18px auto;min-height:calc(100vh - 36px);border-radius:30px;overflow:hidden;border:1px solid #d4dde6}}
+
+/* preview ribbon */
+.prevbadge{background:repeating-linear-gradient(135deg,#1c2b46,#1c2b46 12px,#22314d 12px,#22314d 24px);
+  color:#ffd98a;font-size:11px;font-weight:800;text-align:center;padding:6px 10px;letter-spacing:.04em}
+
+/* header */
+.top{background:linear-gradient(160deg,var(--navy),#0a2235);color:#fff;padding:18px 20px 20px;position:sticky;top:0;z-index:20}
+.top .row1{display:flex;align-items:center;gap:11px}
+.logo{width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,var(--teal),var(--teal-d));
+  display:flex;align-items:center;justify-content:center;font-weight:900;font-size:18px;color:#fff;flex:none;
+  box-shadow:0 5px 14px -4px rgba(19,163,163,.7)}
+.top .ttl{font-weight:800;font-size:18px;letter-spacing:-.01em}
+.top .ttl small{display:block;font-weight:500;font-size:11.5px;color:#86a4bb;letter-spacing:.02em}
+.top .bell{margin-left:auto;width:42px;height:42px;border-radius:12px;border:none;background:rgba(255,255,255,.1);
+  color:#fff;font-size:18px;position:relative}
+.top .bell .dot{position:absolute;top:9px;right:10px;width:9px;height:9px;border-radius:50%;background:var(--gold);border:2px solid var(--navy)}
+.me{margin-top:15px;display:flex;align-items:center;gap:11px;background:rgba(255,255,255,.08);border-radius:14px;padding:11px 13px}
+.me .av{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#c98a2a);
+  color:#3a2a08;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;flex:none}
+.me .nm{font-weight:700;font-size:14.5px}
+.me .sub{font-size:12px;color:#9fbace}
+
+/* body */
+.body{padding:18px 16px 120px}
+.lead{font-size:13px;color:var(--mut);font-weight:600;margin:4px 2px 12px;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.flash{display:inline-flex;align-items:center;gap:5px;background:#fff;border:1px solid var(--line);border-radius:20px;
+  padding:3px 10px 3px 7px;font-size:11.5px;color:var(--teal-d);font-weight:700}
+.flash .fdot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 7px var(--green)}
+
+/* hero */
+.hero{background:var(--card);border-radius:20px;padding:20px;box-shadow:var(--shadow);margin-bottom:16px;
+  border:1px solid #eef3f7;position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;inset:0 0 auto 0;height:5px;background:var(--amber)}
+.hero .hl{font-size:12.5px;color:var(--mut);font-weight:700;text-transform:uppercase;letter-spacing:.05em;display:flex;align-items:center;gap:8px}
+.pilotchip{font-size:10.5px;font-weight:800;color:#8a5a14;background:var(--amber-bg);border-radius:7px;padding:2px 8px;letter-spacing:.01em;text-transform:none}
+.hero .big{font-size:62px;font-weight:900;line-height:.95;letter-spacing:-.03em;margin:6px 0 2px;color:var(--amber)}
+.hero .big span{font-size:26px;font-weight:800}
+.hero .plan{font-size:14.5px;color:var(--ink);font-weight:600}
+.hero .plan b{color:var(--amber)}
+.hero .prem{display:flex;align-items:flex-start;gap:9px;margin-top:12px;background:var(--slate-bg);border-radius:12px;padding:11px 13px;font-size:12.5px;font-weight:600;color:#41515f;line-height:1.5}
+.hero .prem .ic{flex:none}
+.hero .prem b{color:var(--navy)}
+.track{height:13px;border-radius:8px;background:#eef2f6;margin-top:15px;overflow:hidden;position:relative}
+.track .pf{position:absolute;inset:0;background:repeating-linear-gradient(135deg,#dde5ec,#dde5ec 6px,#e8eef3 6px,#e8eef3 12px)}
+.track .ff{position:absolute;inset:0;background:linear-gradient(90deg,var(--amber),#eaa64a);border-radius:8px}
+.tracklab{display:flex;justify-content:space-between;font-size:11.5px;color:var(--mut);font-weight:600;margin-top:7px}
+
+/* honesty banner */
+.honest{background:var(--blue-bg);border:1px solid #d3e2f3;border-radius:16px;padding:14px 15px;margin-bottom:16px;font-size:13px;line-height:1.55;color:#274a72}
+.honest b{color:#1b3a5e}
+.honest .ht{font-weight:800;font-size:13.5px;display:flex;align-items:center;gap:7px;margin-bottom:6px;color:#1b3a5e}
+.honest .when{margin-top:9px;padding-top:9px;border-top:1px solid #d3e2f3;font-size:12.5px}
+.tagb{display:inline-block;font-size:10.5px;font-weight:800;border-radius:6px;padding:1px 6px;vertical-align:middle;letter-spacing:.02em;white-space:nowrap}
+.tagb.live{background:var(--green-bg);color:var(--green)}
+.tagb.obs{background:var(--slate-bg);color:#5f6e7c}
+
+/* section head */
+.sh{font-size:15px;font-weight:800;margin:22px 4px 12px;display:flex;align-items:center;gap:9px}
+.sh small{font-weight:600;font-size:12px;color:var(--mut);margin-left:auto}
+.sh .pin{font-size:10.5px;font-weight:800;border-radius:6px;padding:1px 7px}
+.sh .pin.live{background:var(--green-bg);color:var(--green)}
+.sh .pin.obs{background:var(--slate-bg);color:#5f6e7c}
+
+/* driver card */
+.drv{background:var(--card);border-radius:18px;box-shadow:var(--shadow);margin-bottom:12px;overflow:hidden;
+  border:1px solid #eef3f7;border-left:6px solid var(--teal);width:100%;text-align:left;display:block;
+  animation:rise .3s ease both}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.drv.amber{border-left-color:var(--amber)} .drv.green{border-left-color:var(--green)} .drv.obs{border-left-color:var(--slate)}
+.drv .in{padding:15px 16px}
+.drv .r1{display:flex;align-items:flex-start;gap:10px}
+.drv .nm{font-size:16px;font-weight:800;letter-spacing:-.01em;flex:1}
+.drv .w{font-size:12px;font-weight:800;color:#fff;background:var(--navy2);border-radius:8px;padding:2px 8px;white-space:nowrap;flex:none}
+.drv .w.mult{background:var(--gold)} .drv .w.diag{background:var(--slate)}
+.drv .val{display:flex;align-items:baseline;gap:8px;margin-top:10px}
+.drv .val .n{font-size:30px;font-weight:900;line-height:1;letter-spacing:-.02em}
+.drv .val .n.amber{color:var(--amber)} .drv .val .n.green{color:var(--green)} .drv .val .n.teal{color:var(--teal-d)} .drv .val .n.slate{color:#5f6e7c}
+.drv .val .goal{font-size:12.5px;color:var(--mut);font-weight:600}
+.drv .meta{font-size:12.5px;color:var(--mut);font-weight:600;margin-top:6px}
+.drv .meta b{color:var(--ink)}
+.drv .bar{height:8px;border-radius:6px;background:#eef2f6;margin-top:11px;overflow:hidden;position:relative}
+.drv .bar i{position:absolute;inset:0;border-radius:6px}
+.drv .foot{display:flex;align-items:center;gap:6px;margin-top:11px;font-size:12.5px;color:var(--teal-d);font-weight:700}
+.drv .foot .tg{margin-left:auto}
+.drv.obs .foot{color:#5f6e7c}
+
+/* gates */
+.gates{background:var(--card);border-radius:18px;box-shadow:var(--shadow);overflow:hidden;border:1px solid #eef3f7}
+.grow{display:flex;align-items:center;gap:11px;padding:13px 16px;border-bottom:1px solid var(--line);font-size:14px}
+.grow:last-child{border-bottom:none}
+.grow .gi{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;flex:none;color:#fff}
+.grow .gi.ok{background:var(--green)} .grow .gi.bad{background:var(--red)}
+.grow .gn{font-weight:700;flex:1}
+.grow .gs{font-size:12px;font-weight:800;white-space:nowrap}
+.grow .gs.ok{color:var(--green)} .grow .gs.bad{color:var(--red)}
+.gnote{font-size:12.5px;color:var(--mut);font-weight:600;margin:10px 4px 0;line-height:1.55;display:flex;gap:7px}
+.gnote b{color:var(--ink)}
+
+/* note blocks */
+.note{background:var(--card);border-radius:18px;box-shadow:var(--shadow);border:1px solid #eef3f7;padding:15px 16px;margin-bottom:13px}
+.note .nt{font-size:14.5px;font-weight:800;display:flex;align-items:center;gap:8px;margin-bottom:9px}
+.note ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.note li{font-size:13px;line-height:1.5;color:var(--ink);display:flex;gap:9px}
+.note li .ic{flex:none;font-size:15px;line-height:1.3}
+.note li b{color:var(--teal-d)}
+.lever{border-left:6px solid var(--gold)}
+.lever .nt{color:#8a5a14}
+.lever .lv{font-size:13.5px;line-height:1.55;color:var(--ink)}
+.lever .lv b{color:var(--gold)}
+.lever .plus{display:inline-block;background:var(--amber-bg);color:#8a5a14;font-weight:800;border-radius:8px;padding:2px 9px;font-size:13px;margin-top:9px}
+.salary{background:#0e2a40;color:#dce7f0;border:none}
+.salary .nt{color:#fff}
+.salary .st{font-size:13px;line-height:1.6}
+.salary .st b{color:var(--gold)}
+
+/* help */
+.help{text-align:center;font-size:12.5px;color:var(--mut);margin:22px 10px 0;line-height:1.6}
+.help b{color:var(--teal-d)}
+.demo{text-align:center;font-size:11px;color:var(--mut);margin:16px 0 4px;letter-spacing:.02em}
+
+/* sheet */
+.scrim{position:fixed;inset:0;background:rgba(14,42,64,.5);opacity:0;pointer-events:none;transition:opacity .22s;z-index:40}
+.scrim.on{opacity:1;pointer-events:auto}
+.sheet{position:fixed;left:0;right:0;bottom:0;max-width:468px;margin:0 auto;background:var(--card);
+  border-radius:24px 24px 0 0;padding:8px 20px calc(22px + env(safe-area-inset-bottom));z-index:41;
+  transform:translateY(110%);transition:transform .28s cubic-bezier(.22,1,.36,1);box-shadow:0 -10px 40px -10px rgba(14,42,64,.4);
+  max-height:88vh;overflow:auto}
+.sheet.on{transform:none}
+.grab{width:42px;height:5px;border-radius:3px;background:#dbe3ea;margin:8px auto 14px}
+.sheet h3{font-size:20px;font-weight:800;letter-spacing:-.01em;display:flex;align-items:center;gap:9px}
+.sheet .q{font-size:13px;color:var(--mut);font-weight:600;margin:3px 0 16px}
+.shblock{margin:0 0 16px}
+.shblock .lab{font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:var(--teal-d);margin-bottom:5px}
+.shblock p{font-size:14px;line-height:1.55;color:var(--ink)}
+.shblock p b{color:var(--navy)}
+.formula{background:#f5f8fa;border-radius:12px;padding:13px 15px;font-size:13.5px;line-height:1.7;color:var(--ink);font-weight:600}
+.formula b{color:var(--teal-d)}
+.closeb{width:100%;min-height:var(--tap);border:none;border-radius:14px;background:var(--teal);color:#fff;
+  font-size:16px;font-weight:800;margin-top:4px;box-shadow:0 7px 18px -7px rgba(19,163,163,.85)}
+.closeb:active{background:var(--teal-d)}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="prevbadge">ПРЕДПРОСМОТР · цифры учебные · принцип MuraPlan</div>
+
+  <header class="top">
+    <div class="row1">
+      <div class="logo">☎</div>
+      <div class="ttl">Мой счёт<small>Телемаркетинг · KPI</small></div>
+      <button class="bell" aria-label="Уведомления">🔔<span class="dot"></span></button>
+    </div>
+    <div class="me">
+      <div class="av">Д</div>
+      <div><div class="nm">Динара К.</div><div class="sub">Менеджер телемаркетинга · поток «Входящие лиды»</div></div>
+    </div>
+  </header>
+
+  <main class="body">
+    <div class="lead">Период: июнь · база в работе <b style="color:var(--ink)">210</b> лидов · <span class="flash"><span class="fdot"></span>обновляется ежедневно</span></div>
+
+    <!-- HERO -->
+    <section class="hero" aria-label="Мой счёт за период">
+      <div class="hl">Мой счёт за период <span class="pilotchip">🔬 тренировочный режим</span></div>
+      <div class="big"><span id="heroScore">—</span><span> / 100</span></div>
+      <div class="plan">Цель — <b id="heroGoal">80</b>. <span id="heroVerdict">—</span></div>
+      <div class="prem"><span class="ic">💡</span><span>Считаем по-настоящему, но <b>премию пока не начисляем</b>. Когда включится боевой режим — премия (≤25%) посчитается от этого счёта. Сейчас это репетиция и обратная связь.</span></div>
+      <div class="track" role="img" aria-label="Прогресс счёта к цели">
+        <div class="pf" id="heroPlan" style="width:80%"></div><div class="ff" id="heroFill" style="width:0%"></div>
+      </div>
+      <div class="tracklab"><span>счёт <b id="heroScore2">—</b></span><span>цель <b id="heroGoal2">80</b></span></div>
+    </section>
+
+    <!-- HONESTY BANNER -->
+    <div class="honest">
+      <div class="ht">⚖️ Что считается «по-боевому», а что наблюдаем</div>
+      <b>Боевые</b> <span class="tagb live">боевой</span> — телефония считает их точно: <b>назначенные показы (КЭВ)</b> и <b>содержательные разговоры</b> на выданную базу. Из них и сложится премия.<br>
+      <b style="margin-top:4px;display:inline-block">Наблюдение</b> <span class="tagb obs">набл.</span> — <b>доходимость</b> и <b>качество показа</b>: связка «показ → менеджер на объекте» в CRM ещё чинится, числам пока нельзя доверять. Показываем для диагностики, <b>на счёт и премию не влияют</b>.
+      <div class="when">🔓 Премия (≤25%) включится, когда: (1) CRM свяжет показ→менеджер, (2) выйдет Положение о премировании и допсоглашение. До этого — наблюдательный режим, как поощрение.</div>
+    </div>
+
+    <!-- BOEVOY -->
+    <div class="sh">Из чего счёт <span class="pin live">боевое</span> <small>нажми карточку — поясню</small></div>
+
+    <button class="drv amber" onclick="openSheet('kev')">
+      <div class="in">
+        <div class="r1"><div class="nm">Назначенные показы (КЭВ) на базу</div><div class="w">вес 60%</div></div>
+        <div class="val"><span class="n amber" id="vKev">—</span><span class="goal">КЭВ от базы · цель ≥ 20%</span></div>
+        <div class="meta">Назначено <b id="mKev">34</b> показов из <b>210</b> лидов · охват базы <b id="mReach">—</b></div>
+        <div class="bar"><i id="bKev" style="width:0%;background:linear-gradient(90deg,var(--amber),#eaa64a)"></i></div>
+        <div class="foot">🎯 Твой главный боевой рычаг <span class="tg tagb live">боевой</span></div>
+      </div>
+    </button>
+
+    <button class="drv green" onclick="openSheet('talks')">
+      <div class="in">
+        <div class="r1"><div class="nm">Содержательные разговоры на базу</div><div class="w">вес 40%</div></div>
+        <div class="val"><span class="n green" id="vTalk">—</span><span class="goal">контактность · цель ≥ 75%</span></div>
+        <div class="meta">Живых диалогов с квалификацией: <b id="mTalk">134</b> из <b>210</b></div>
+        <div class="bar"><i id="bTalk" style="width:0%;background:linear-gradient(90deg,var(--green),#3bbf78)"></i></div>
+        <div class="foot">☎️ Дозвон + квалификация <span class="tg tagb live">боевой</span></div>
+      </div>
+    </button>
+
+    <button class="drv" onclick="openSheet('call')">
+      <div class="in">
+        <div class="r1"><div class="nm">Как ты звонишь</div><div class="w mult">множитель ×</div></div>
+        <div class="val"><span class="n teal" id="vCall">0.90<small style="font-size:18px">×</small></span><span class="goal">качество по записям · цель ≥ 0.90</span></div>
+        <div class="meta">Выборка 12 записей · ABC-вопросы, скрипт, вежливость</div>
+        <div class="bar"><i style="width:90%;background:linear-gradient(90deg,var(--teal),var(--teal-d))"></i></div>
+        <div class="foot">🎧 Умножает весь счёт <span class="tg tagb live">боевой (выборка)</span></div>
+      </div>
+    </button>
+
+    <div class="honest" style="margin-top:14px">
+      <div class="ht">🧮 Формула простыми словами</div>
+      <span class="formula" style="display:block" id="formulaLine">…</span>
+    </div>
+
+    <!-- NABLYUDENIE -->
+    <div class="sh">Наблюдаем — пока не платим <span class="pin obs">набл.</span></div>
+
+    <button class="drv obs" onclick="openSheet('show')">
+      <div class="in">
+        <div class="r1"><div class="nm">Доходимость показов</div><div class="w diag">диагностика</div></div>
+        <div class="val"><span class="n slate" id="vShow">—</span><span class="goal">дошло / назначено · ориентир ≥ 75%</span></div>
+        <div class="meta">Назначено <b>34</b> · дошло <b id="mReached">24</b> · не дошло 10</div>
+        <div class="bar"><i id="bShow" style="width:0%;background:linear-gradient(90deg,#9aa7b3,#b3bdc7)"></i></div>
+        <div class="foot">📉 Станет боевой после сцепки CRM <span class="tg tagb obs">набл.</span></div>
+      </div>
+    </button>
+
+    <button class="drv obs" onclick="openSheet('qual')">
+      <div class="in">
+        <div class="r1"><div class="nm">Качество показа</div><div class="w diag">диагностика</div></div>
+        <div class="val"><span class="n slate" id="vQual">—</span><span class="goal">целевых / дошло · ориентир ≥ 85%</span></div>
+        <div class="meta">Целевыми: <b id="mTargeted">20</b> из <b id="mReached2">24</b> · оценка менеджера + арбитраж РОП</div>
+        <div class="bar"><i id="bQual" style="width:0%;background:linear-gradient(90deg,#9aa7b3,#b3bdc7)"></i></div>
+        <div class="foot">⚖️ Спорное оспаривается у РОП <span class="tg tagb obs">набл.</span></div>
+      </div>
+    </button>
+
+    <!-- GATES -->
+    <div class="sh">Красные линии (гейты)</div>
+    <div class="gates">
+      <div class="grow"><span class="gi ok">✓</span><span class="gn">Жалоб от клиентов нет</span><span class="gs ok">чисто</span></div>
+      <div class="grow"><span class="gi ok">✓</span><span class="gn">Без приписок (показы реальные)</span><span class="gs ok">чисто</span></div>
+      <div class="grow"><span class="gi ok">✓</span><span class="gn">Все звонки — через CRM</span><span class="gs ok">чисто</span></div>
+      <div class="grow"><span class="gi ok">✓</span><span class="gn">Качество звонка ≥ порога</span><span class="gs ok">0.90</span></div>
+    </div>
+    <div class="gnote">🛡️ <span>Гейт срабатывает только по <b>акту/подтверждению второго лица</b> (РОП или контроль качества), не автоматически. Обнуляет <b>только премию за период</b> — оклад не трогаем ни при каком счёте. И только после Положения о премировании.</span></div>
+
+    <!-- ANTI-GAMING -->
+    <div class="note" style="margin-top:18px">
+      <div class="nt">🔒 Почему счёт нельзя «накрутить»</div>
+      <ul>
+        <li><span class="ic">📊</span><span><b>Считаем от выданной базы, а не от назначений.</b> Нельзя поднять цифру, перестав назначать показы: меньше назначишь — ниже «КЭВ на базу». Охват базы под отдельным контролем.</span></li>
+        <li><span class="ic">🤝</span><span><b>Показ зачтётся, когда реально состоялся</b> и менеджер на объекте подтвердил. Записать «назначил» — мало (это уйдёт в доходимость, а она пока наблюдение).</span></li>
+        <li><span class="ic">⏱️</span><span><b>Звонки-пятисекундки и «левые» номера не считаются.</b> Содержательный = живой диалог с признаками квалификации (ABC).</span></li>
+        <li><span class="ic">⚖️</span><span><b>«Нецелевой лид» и «не дошёл» — закрытый список причин</b> и решает РОП, не менеджер продаж единолично. Спорное можно оспорить по записи — до разбора премию не режет.</span></li>
+        <li><span class="ic">🎚️</span><span><b>Цели свои для входящих и исходящих.</b> Холодную базу не меряем меркой тёплой — пороги задаются по потоку.</span></li>
+      </ul>
+    </div>
+
+    <!-- LEVER -->
+    <div class="note lever">
+      <div class="nt">🚀 Что поднимет счёт быстрее всего</div>
+      <div class="lv"><b>Дозвон и квалификация.</b> Из 210 лидов содержательно поговорил с 134 (64%). Дотянись до <b>75%</b> (≈158 разговоров) — при той же конверсии это ~40 КЭВ вместо 34. Перезванивай по недозвонам в 2–3 окна, не бросай после первого гудка.</div>
+      <span class="plus">до +10 к счёту за период</span>
+    </div>
+
+    <!-- SALARY -->
+    <div class="note salary">
+      <div class="nt">💼 Про деньги — честно</div>
+      <div class="st">Оклад <b>не зависит</b> от счёта и гарантирован по штатному расписанию (≥ МЗП РК). Счёт влияет <b>только на премию</b> (≤ 25% сверху). Премия и гейты включаются лишь после Положения о премировании и допсоглашения — до этого счёт работает в наблюдении, как поощрение и обратная связь.</div>
+    </div>
+
+    <div class="help">Вопрос по счёту или кажется, что цифра неверная?<br>Напиши <b>своему РОПу</b> — разберём с записями звонков.</div>
+    <div class="demo">Демо · данные условные, имя вымышленное · перенос принципа MuraPlan на телемаркетинг</div>
+  </main>
+</div>
+
+<!-- SHEETS -->
+<div class="scrim" id="scrim" onclick="closeSheet()"></div>
+
+<div class="sheet" id="sheet-kev" role="dialog" aria-modal="true" aria-labelledby="sh-kev-t">
+  <div class="grab"></div>
+  <h3 id="sh-kev-t">🎯 Назначенные показы (КЭВ)</h3>
+  <div class="q">Вес 60% · главный боевой рычаг · телефония + CRM считают точно</div>
+  <div class="shblock"><div class="lab">Как считается</div>
+    <div class="formula">КЭВ на базу = <b>назначено показов ÷ выданная база</b><br>= 34 ÷ 210 = <b>16%</b> (цель ≥ 20%)</div></div>
+  <div class="shblock"><div class="lab">Почему от базы, а не «дошло/назначено»</div>
+    <p>Чтобы счёт нельзя было поднять, <b>назначая меньше</b> «верных» показов. Меряем результат против <b>всей выданной базы</b> — это поощряет назначать смело, а не осторожно.</p></div>
+  <div class="shblock"><div class="lab">Как поднять</div>
+    <p>Больше доводи разговор до <b>следующего шага</b> — показа. Не «приходите посмотреть», а «подготовлю 2–3 варианта под вашу задачу и расчёт». Назначай показ <b>ближе по дате</b>.</p></div>
+  <button class="closeb" onclick="closeSheet()">Понятно</button>
+</div>
+
+<div class="sheet" id="sheet-talks" role="dialog" aria-modal="true" aria-labelledby="sh-talks-t">
+  <div class="grab"></div>
+  <h3 id="sh-talks-t">☎️ Содержательные разговоры</h3>
+  <div class="q">Вес 40% · дозвон + квалификация · боевой</div>
+  <div class="shblock"><div class="lab">Как считается</div>
+    <div class="formula">Контактность = <b>содержательных разговоров ÷ база</b><br>= 134 ÷ 210 = <b>64%</b> (цель ≥ 75%)</div></div>
+  <div class="shblock"><div class="lab">Что считается «содержательным»</div>
+    <p>Живой диалог, где ты <b>квалифицировал</b> клиента (для кого, бюджет, способ оплаты, срок). Сброшенные звонки и 5-секундные «недозвоны» не в счёт.</p></div>
+  <div class="shblock"><div class="lab">Как поднять</div>
+    <p>Перезванивай по недозвонам в <b>2–3 разных окна</b> (утро/обед/вечер). Первый гудок без ответа — не повод закрывать лид.</p></div>
+  <button class="closeb" onclick="closeSheet()">Понятно</button>
+</div>
+
+<div class="sheet" id="sheet-call" role="dialog" aria-modal="true" aria-labelledby="sh-call-t">
+  <div class="grab"></div>
+  <h3 id="sh-call-t">🎧 Как ты звонишь</h3>
+  <div class="q">Множитель ×0.6–1.0 · умножает весь счёт · боевой (по выборке)</div>
+  <div class="shblock"><div class="lab">Как считается</div>
+    <p>Контроль качества слушает <b>выборку твоих записей</b> по чек-листу: контакт, ABC-вопросы, «боль», презентация под неё, закрытие на следующий шаг, вежливость. Средняя оценка → множитель.</p>
+    <div class="formula">Итог = базовый счёт <b>× 0.90</b></div></div>
+  <div class="shblock"><div class="lab">Почему множитель, а не вес</div>
+    <p>Чтобы качество считалось <b>один раз</b> и не дублировалось. Плохо звонишь — проседает весь счёт, а не одна строка.</p></div>
+  <div class="shblock"><div class="lab">Как поднять</div>
+    <p>Держи структуру: <b>контакт → рамка → 3 вопроса ABC → боль → презентация под боль → следующий шаг</b>. Не дави — веди к уверенному шагу.</p></div>
+  <button class="closeb" onclick="closeSheet()">Понятно</button>
+</div>
+
+<div class="sheet" id="sheet-show" role="dialog" aria-modal="true" aria-labelledby="sh-show-t">
+  <div class="grab"></div>
+  <h3 id="sh-show-t">📉 Доходимость показов</h3>
+  <div class="q">Диагностика · наблюдение · на премию пока не влияет</div>
+  <div class="shblock"><div class="lab">Как считается</div>
+    <div class="formula">Доходимость = <b>дошло до объекта ÷ назначено</b><br>= 24 ÷ 34 = <b>71%</b></div></div>
+  <div class="shblock"><div class="lab">Почему это «наблюдение», а не часть счёта</div>
+    <p>Связка <b>показ → менеджер на объекте</b> в CRM сцеплена не везде (это видно по данным воронки). Пока числам нельзя доверять для денег. Поэтому доходимость — <b>диагностика</b>: помогает понять, где теряешь, но премию не двигает. Станет боевой, когда CRM-связку починят.</p></div>
+  <div class="shblock"><div class="lab">Почему её нет в весах напрямую</div>
+    <p>Если платить за «дошло ÷ назначено», выгодно <b>назначать меньше</b>, но «вернее». Поэтому боевым считаем «КЭВ на базу», а доходимость держим рядом как зеркало.</p></div>
+  <button class="closeb" onclick="closeSheet()">Понятно</button>
+</div>
+
+<div class="sheet" id="sheet-qual" role="dialog" aria-modal="true" aria-labelledby="sh-qual-t">
+  <div class="grab"></div>
+  <h3 id="sh-qual-t">⚖️ Качество показа</h3>
+  <div class="q">Диагностика · наблюдение · защита от «лишь бы записать»</div>
+  <div class="shblock"><div class="lab">Как считается</div>
+    <div class="formula">Качество = <b>целевых ÷ дошло</b><br>= 20 ÷ 24 = <b>83%</b></div></div>
+  <div class="shblock"><div class="lab">Кто ставит оценку</div>
+    <p>Первичную оценку «клиент целевой / пришёл просто посмотреть» даёт менеджер на объекте. Но он <b>заинтересованная сторона</b>, поэтому спорные и выборочные кейсы <b>проверяет РОП / контроль качества</b> — не менеджер единолично.</p></div>
+  <div class="shblock"><div class="lab">Если не согласен с «нецелевой»</div>
+    <p>Оспорь у РОП <b>по записи звонка</b>. До разбора пометка <b>не снижает твою цифру</b> — так же, как причина «не дошёл».</p></div>
+  <button class="closeb" onclick="closeSheet()">Понятно</button>
+</div>
+
+<script>
+/* Все числа выводятся из одного расчёта — формула в макете обязана сходиться. */
+var D = {
+  base: 210,            // выданная база лидов (период, поток «Входящие»)
+  kev: 34,              // назначенные показы (КЭВ)        — БОЕВОЙ
+  talks: 134,           // содержательные разговоры          — БОЕВОЙ
+  qaMult: 0.90,         // множитель качества звонка (выборка) — БОЕВОЙ
+  reached: 24,          // показов дошло                     — наблюдение
+  targeted: 20,         // из дошедших — целевых             — наблюдение
+  tgtKevRate: 20,       // цель: % КЭВ от базы (per-поток)
+  tgtTalkRate: 75,      // цель: % контактности (per-поток)
+  scoreGoal: 80
+};
+
+function clampScore(x){ return Math.max(0, Math.min(100, x)); }
+function pct(a,b){ return b ? (a/b*100) : 0; }
+
+var kevRate  = pct(D.kev, D.base);            // 16.2%
+var talkRate = pct(D.talks, D.base);          // 63.8%
+var kevAch   = clampScore(Math.round(kevRate  / D.tgtKevRate  * 100));  // 81
+var talkAch  = clampScore(Math.round(talkRate / D.tgtTalkRate * 100));  // 85
+var baseScore = kevAch*0.60 + talkAch*0.40;   // 82.6
+var score = Math.round(baseScore * D.qaMult); // 74
+
+var showRate = Math.round(pct(D.reached, D.kev));        // 71
+var qualRate = Math.round(pct(D.targeted, D.reached));   // 83
+
+function set(id,v){ var e=document.getElementById(id); if(e) e.textContent=v; }
+function setW(id,v){ var e=document.getElementById(id); if(e) e.style.width=Math.max(0,Math.min(100,v))+'%'; }
+
+/* hero */
+set('heroScore', score); set('heroScore2', score);
+set('heroGoal', D.scoreGoal); set('heroGoal2', D.scoreGoal);
+setW('heroFill', score); setW('heroPlan', D.scoreGoal);
+set('heroVerdict', score >= D.scoreGoal ? 'Идёшь по цели — держи темп.' : 'Идёшь чуть ниже цели — рычаг ниже.');
+
+/* boevoy cards */
+set('vKev', kevRate.toFixed(0)+'%'); setW('bKev', kevAch);
+set('mReach', Math.round(pct(D.kev,D.base))+'% базы');
+set('vTalk', talkRate.toFixed(0)+'%'); setW('bTalk', talkAch);
+set('vCall', D.qaMult.toFixed(2)+'×');
+
+/* formula — из тех же переменных */
+document.getElementById('formulaLine').innerHTML =
+  'Счёт = (<b>КЭВ '+kevAch+'</b>×60% + <b>Разговоры '+talkAch+'</b>×40%) × <b>'+D.qaMult.toFixed(2)+'</b><br>'+
+  '= '+baseScore.toFixed(1)+' × '+D.qaMult.toFixed(2)+' ≈ <b>'+score+'</b>';
+
+/* nablyudenie cards */
+set('vShow', showRate+'%'); setW('bShow', showRate);
+set('vQual', qualRate+'%'); setW('bQual', qualRate);
+set('mReached', D.reached); set('mReached2', D.reached); set('mTargeted', D.targeted);
+set('mKev', D.kev); set('mTalk', D.talks);
+
+/* sheets */
+function openSheet(id){
+  document.getElementById('scrim').classList.add('on');
+  document.getElementById('sheet-'+id).classList.add('on');
+}
+function closeSheet(){
+  document.getElementById('scrim').classList.remove('on');
+  document.querySelectorAll('.sheet').forEach(function(s){s.classList.remove('on');});
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeSheet();});
+</script>
+</body>
+</html>
