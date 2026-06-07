@@ -317,9 +317,19 @@ tr.hl td{background:var(--amber-bg);font-weight:800}
       <div class="stat warm"><div class="n">4</div><div class="l">недозвона</div></div>
       <div class="stat hot"><div class="n" id="dayCooling">3</div><div class="l">остывают без касания</div></div>
     </div>
+
+    <div class="card" style="margin-bottom:18px;border-left:5px solid var(--gold);display:flex;align-items:center;gap:14px;padding:14px 18px">
+      <span style="font-size:26px;flex:none">🎯</span>
+      <div style="flex:1;min-width:0">
+        <div style="font-size:14px;font-weight:800">Бронь встреч: <span id="bkMe" style="color:var(--teal-d)">23%</span> <span style="font-weight:600;color:var(--mut);font-size:12.5px">· команда <b id="bkTeam">18%</b> · главный рычаг конверсии</span></div>
+        <div style="font-size:12.5px;color:var(--mut);font-weight:600;margin-top:3px">Из обработанных лидов до записи на встречу доходит меньшинство — отсюда растёт всё остальное.</div>
+      </div>
+      <button class="btn ghost" onclick="go('train')" style="flex:none">🎯 Прокачать бронь</button>
+    </div>
+
     <div class="grid2">
       <div class="card">
-        <div class="ct">🔥 Сейчас займись <small>по важности</small></div>
+        <div class="ct">🔥 Сейчас займись <small>скоринг 0–100 · по приоритету</small></div>
         <div id="cliList"></div>
       </div>
       <div class="rail">
@@ -693,18 +703,21 @@ function go(t){
   window.scrollTo(0,0);
 }
 
-/* ДЕНЬ — ранжированный список «сделай эти 5 действий сейчас» (порядок = приоритет) */
+/* ДЕНЬ — ранжированный список «сделай эти 5 действий сейчас» (скоринг 0–100 = приоритет) */
 var clients=[
-  {nm:'Руслан М.', jk:'Керуен', heat:'hot', ic:'🔥', prio:'now', pl:'СЕЙЧАС', why:'Заходил на сайт ЖК <b>3 раза за вчера</b> — горячий, лови пока думает', a:'Позвонить'},
-  {nm:'Ержан К.', jk:'Атмосфера', heat:'cool', ic:'🟢', prio:'now', pl:'ВИЗИТ СЕГОДНЯ', why:'<b>Визит сегодня 16:00</b> — подтверди за 2 часа, чтобы не сорвался', a:'Подтвердить визит'},
-  {nm:'Айгерим С.', jk:'Аура', heat:'hot', ic:'🔥', prio:'soon', pl:'ОСТЫВАЕТ', why:'Была на визите <b>5 дней назад</b> — тишина, дожать до брони', a:'Позвонить'},
-  {nm:'Данияр Т.', jk:'Аура', heat:'warm', ic:'🟠', prio:'soon', pl:'ОБЕЩАНИЕ', why:'Обещан <b>расчёт рассрочки</b> — не отправлен, держишь слово', a:'Отправить расчёт'},
-  {nm:'Гульнара А.', jk:'Атмосфера', heat:'warm', ic:'🟠', prio:'plan', pl:'ПЕРЕЗВОН', why:'<b>Недозвон ×2</b> утром — попробуй вечером, когда дома', a:'Позвонить'}
+  {nm:'Руслан М.', jk:'Керуен', heat:'hot', ic:'🔥', prio:'now', pl:'СЕЙЧАС', score:92, why:'Заходил на сайт ЖК <b>3 раза за вчера</b> — горячий, лови пока думает', a:'Позвонить'},
+  {nm:'Ержан К.', jk:'Атмосфера', heat:'cool', ic:'🟢', prio:'now', pl:'ВИЗИТ СЕГОДНЯ', score:88, why:'<b>Визит сегодня 16:00</b> — подтверди за 2 часа, чтобы не сорвался', a:'Подтвердить визит'},
+  {nm:'Айгерим С.', jk:'Аура', heat:'hot', ic:'🔥', prio:'soon', pl:'ОСТЫВАЕТ', score:76, why:'Была на визите <b>5 дней назад</b> — тишина, дожать до брони', a:'Позвонить'},
+  {nm:'Данияр Т.', jk:'Аура', heat:'warm', ic:'🟠', prio:'soon', pl:'ОБЕЩАНИЕ', score:64, why:'Обещан <b>расчёт рассрочки</b> — не отправлен, держишь слово', a:'Отправить расчёт'},
+  {nm:'Гульнара А.', jk:'Атмосфера', heat:'warm', ic:'🟠', prio:'plan', pl:'ПЕРЕЗВОН', score:53, why:'<b>Недозвон ×2</b> утром — попробуй вечером, когда дома', a:'Позвонить'}
 ];
 function renderCli(){
   document.getElementById('cliList').innerHTML=clients.map(function(c,i){
+    var scc = c.score>=80?'var(--green-bg);color:var(--green)' : c.score>=60?'var(--amber-bg);color:var(--amber)' : 'var(--slate-bg);color:#5f6e7c';
     return '<div class="cli '+c.heat+'"><div class="rk">'+(i+1)+'</div><div class="heat">'+c.ic+'</div>'+
-      '<div class="info"><div class="nm">'+c.nm+'<span class="jk">ЖК '+c.jk+'</span><span class="prio '+c.prio+'">'+c.pl+'</span></div><div class="why">'+c.why+'</div></div>'+
+      '<div class="info"><div class="nm">'+c.nm+'<span class="jk">ЖК '+c.jk+'</span><span class="prio '+c.prio+'">'+c.pl+'</span>'+
+      '<span title="скоринг приоритета" style="font-size:10px;font-weight:800;border-radius:6px;padding:2px 7px;margin-left:7px;background:'+scc+'">★ '+c.score+'</span></div>'+
+      '<div class="why">'+c.why+'</div></div>'+
       '<div class="act"><button class="btn" onclick="act(\''+c.a+'\',\''+c.nm+'\')">📞 '+c.a+'</button>'+
       '<button class="btn ghost" onclick="act(\'Отложить\',\''+c.nm+'\')">⏰</button></div></div>';
   }).join('');
@@ -944,6 +957,10 @@ function applyMetrics(data){
     if(data.top_behaviors && Array.isArray(data.top_behaviors.rows)){
       try{ renderBench(data.top_behaviors); var bs=document.getElementById('benchSrc'); if(bs) bs.textContent='привычки лучших vs команда · live'; }catch(e){}
       live=true;
+    }
+    // booking-rate команды из живой воронки (Взято→Записан)
+    if(data.funnel && data.funnel.rates && typeof data.funnel.rates.worked_to_booked==='number'){
+      setTxt('bkTeam', data.funnel.rates.worked_to_booked+'%'); live=true;
     }
     if(live){ try{ var b=document.getElementById('srcBadge'); if(b){ b.textContent='данные: live'; b.classList.add('live'); } }catch(e){} }
   }catch(e){ /* фолбэк: ничего не меняем */ }

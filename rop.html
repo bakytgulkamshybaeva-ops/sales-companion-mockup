@@ -69,6 +69,16 @@ tr.risk td{background:var(--red-bg)}
 .coach:last-child{border-bottom:none}
 .coach .cw{width:30px;height:30px;border-radius:9px;background:var(--amber-bg);color:var(--amber);display:flex;align-items:center;justify-content:center;font-weight:900;flex:none}
 .coach .ci{flex:1} .coach .cn{font-weight:800;font-size:13.5px} .coach .cy{font-size:12px;color:var(--mut);font-weight:600;margin-top:2px;line-height:1.4}
+/* CRM-гигиена */
+.hyg{display:flex;align-items:center;gap:18px;margin-bottom:8px}
+.hygscore{width:74px;height:74px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:900;flex:none;color:#fff;box-shadow:var(--shadow)}
+.hygscore .hs{font-size:24px;line-height:1} .hygscore .hl{font-size:9px;font-weight:800;opacity:.85}
+.hygrow{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}
+.hygrow:last-child{border-bottom:none}
+.hygrow .sev{font-size:10px;font-weight:800;border-radius:6px;padding:3px 8px;flex:none;text-transform:uppercase;min-width:58px;text-align:center}
+.hygrow .sev.high{background:var(--red-bg);color:var(--red)} .hygrow .sev.mid{background:var(--amber-bg);color:var(--amber)} .hygrow .sev.low{background:var(--slate-bg);color:#5f6e7c}
+.hygrow .hgl{flex:1;font-size:13.5px;font-weight:700} .hygrow .hgl small{display:block;color:var(--mut);font-weight:600;font-size:11.5px;margin-top:1px}
+.hygrow .hgv{font-size:19px;font-weight:900;color:var(--navy)}
 @media(max-width:880px){.grid2{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.board{grid-template-columns:1fr}.fstage .flabel{width:120px}.fconv{padding-left:132px}}
 </style>
 </head>
@@ -103,6 +113,16 @@ tr.risk td{background:var(--red-bg)}
       <div class="stat" style="flex:3;min-width:240px;display:flex;align-items:center"><div class="l" style="margin:0;font-size:12.5px;line-height:1.5">Где бить: переход <b style="color:var(--ink)">Взято → Записан ~33%</b> — скрипт и возражения (Тренажёр); <b style="color:var(--red)">no-show ~27%</b> — подтверждение визита за день (антисрыв). Это два главных рычага группы.</div></div>
     </div>
     <div style="font-size:11.5px;color:var(--mut);font-weight:600;margin-top:8px;line-height:1.5">Этапы cat0 недозаполнены (дисциплина) → диагностика «где течёт», не для начисления. Полную картину даст фикс данных (см. письмо PM).</div>
+  </div>
+
+  <!-- CRM-гигиена -->
+  <div class="card">
+    <div class="ct">🧹 Гигиена CRM · что чинить <small id="hygSrc">read-only деривация · демо</small></div>
+    <div class="hyg">
+      <div class="hygscore" id="hygScore"><span class="hs">—</span><span class="hl">здоровье</span></div>
+      <div style="font-size:12.5px;color:var(--mut);font-weight:600;line-height:1.5">Дыры дисциплины, которые ловятся из данных уже сейчас. <b style="color:var(--red)">Важно</b> — блокирует достоверную конверсию/премию; чинится силами РОП/админа ещё до структурного фикса. Числа подтягиваются из живого прогона.</div>
+    </div>
+    <div id="hygBody"></div>
   </div>
 
   <div class="grid2">
@@ -224,13 +244,33 @@ function renderFunnel(f){
   document.getElementById('funnelBody').innerHTML=html;
   var ns=document.getElementById('noshowVal'); if(ns&&f.rates&&f.rates.noshow_pct!=null) ns.textContent=f.rates.noshow_pct+'%';
 }
-renderBench(benchDemo); renderFunnel(funnelDemo);
+/* CRM-гигиена — демо (зеркалит живой май), перекрывается data.crm_hygiene */
+var hygDemo={score:34, items:[
+  {sev:'high',label:'Визиты в продажах не отражены в cat0 (WON)',value:493,hint:'поле «ТМ-менеджер» / дисциплина cat0 WON → разблокирует конверсию'},
+  {sev:'high',label:'«Не дошёл» без «Подтверждён» (несостыковка этапов)',value:277,hint:'этап «Подтверждён визит» не ведётся — дисциплина cat0'},
+  {sev:'high',label:'Записаны, но не подтверждены',value:96,hint:'подтверждать визит за 24ч (антисрыв)'},
+  {sev:'mid',label:'Лиды без касания ≥5 дн (остывают)',value:386,hint:'добивать из «Горящей очереди»'},
+  {sev:'low',label:'Дубли (исключаются из знаменателя)',value:126,hint:'чистка контактов'}
+]};
+function renderHygiene(h){
+  if(!h||!Array.isArray(h.items)) h=hygDemo;
+  var sc=(typeof h.score==='number')?h.score:100;
+  var el=document.getElementById('hygScore');
+  if(el){ el.style.background=(sc>=70?'var(--green)':sc>=45?'var(--amber)':'var(--red)'); el.innerHTML='<span class="hs">'+sc+'</span><span class="hl">здоровье</span>'; }
+  var sevTxt={high:'важно',mid:'средне',low:'мелкое'};
+  document.getElementById('hygBody').innerHTML=h.items.map(function(it){
+    return '<div class="hygrow"><span class="sev '+it.sev+'">'+(sevTxt[it.sev]||it.sev)+'</span>'+
+      '<div class="hgl">'+it.label+'<small>'+it.hint+'</small></div><div class="hgv">'+it.value+'</div></div>';
+  }).join('');
+}
+renderBench(benchDemo); renderFunnel(funnelDemo); renderHygiene(hygDemo);
 (function(){
   var URLS=['companion_metrics.json','../integration/companion_metrics.json'];
   function ff(u,i){ i=i||0; if(i>=u.length) return Promise.reject(new Error('no src')); return fetch(u[i]).then(function(r){ if(!r.ok) throw new Error('http'); return r.json(); }).catch(function(){ return ff(u,i+1); }); }
   try{ ff(URLS).then(function(d){
     if(d&&d.top_behaviors&&Array.isArray(d.top_behaviors.rows)){ renderBench(d.top_behaviors); var s=document.getElementById('benchSrc'); if(s) s.textContent='live · топы vs команда'; }
     if(d&&d.funnel&&Array.isArray(d.funnel.stages)){ renderFunnel(d.funnel); var fs=document.getElementById('funnelSrc'); if(fs) fs.textContent='cat0 · группа · live'; }
+    if(d&&d.crm_hygiene&&Array.isArray(d.crm_hygiene.items)){ renderHygiene(d.crm_hygiene); var hs=document.getElementById('hygSrc'); if(hs) hs.textContent='read-only деривация · live'; }
   }).catch(function(){}); }catch(e){}
 })();
 </script>
