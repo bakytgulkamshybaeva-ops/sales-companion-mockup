@@ -117,6 +117,16 @@ tr.risk td{background:var(--red-bg)}
     </div>
   </div>
 
+  <!-- Модуль «Что делают топы» (бенчмарк поведения) -->
+  <div class="card">
+    <div class="ct">🏆 Что делают топы · перенять на группу <small id="benchSrc">демо · топы vs команда</small></div>
+    <table class="benchtbl">
+      <thead><tr><th>Привычка · надёжный сигнал (read-only)</th><th>Топы</th><th>Команда</th><th>Разрыв</th></tr></thead>
+      <tbody id="benchBody"></tbody>
+    </table>
+    <div style="font-size:12px;color:var(--mut);font-weight:600;margin-top:12px;line-height:1.55">Топы — это <b style="color:var(--teal-d)">привычки, а не талант</b>: быстрее перезванивают, не дают лидам остыть, делают больше успешных звонков. <b>Действие РОП:</b> на планёрке разобрать <b>одну</b> привычку и закрепить у отстающих (М5, М3) — тренировка вт/чт по «Точке роста». Метрики — надёжные (звонки, скорость, follow-up), не зависят от блокера конверсии.</div>
+  </div>
+
   <!-- Модуль 3: Верификация визитов (risk-based) -->
   <div class="card">
     <div class="ct">✅ Верификация визитов · очередь (risk-based) <small>прозвон ≥10/нед · независимо от менеджера</small></div>
@@ -128,5 +138,32 @@ tr.risk td{background:var(--red-bg)}
 
   <div class="demo">Демо · РОП-MVP по docs/handoff-rop.md · данные условные, имена вымышленные · конверсия/премия — наблюдение до фикса данных Bitrix</div>
 </div>
+
+<script>
+/* «Что делают топы» — демо, перекрывается top_behaviors из коннектора (companion_metrics.json) */
+var benchDemo={rows:[
+  {metric:'Успешные звонки', top:155, team:136, better:'higher', unit:''},
+  {metric:'Минут разговора / звонок', top:1.4, team:1.3, better:'higher', unit:' мин'},
+  {metric:'Скорость до 1-го звонка', top:11.5, team:20.5, better:'lower', unit:' мин'},
+  {metric:'Остывающих лидов', top:3.5, team:7.5, better:'lower', unit:''},
+  {metric:'Обработано лидов', top:196.5, team:192, better:'higher', unit:''}
+]};
+function fmtNum(n){ return (typeof n==='number') ? (Math.round(n*10)/10).toLocaleString('ru-RU') : '—'; }
+function renderBench(b){
+  if(!b||!Array.isArray(b.rows)) b=benchDemo;
+  document.getElementById('benchBody').innerHTML=b.rows.map(function(r){
+    var good=(typeof r.top==='number'&&typeof r.team==='number')?((r.better==='higher')?(r.top>r.team):(r.top<r.team)):false;
+    var gap='—';
+    if(good){ var d=r.better==='higher'?(r.top-r.team):(r.team-r.top); gap='<span class="tag ok">лучше на '+fmtNum(d)+(r.unit||'')+'</span>'; }
+    return '<tr><td>'+r.metric+'</td><td><b>'+fmtNum(r.top)+(r.unit||'')+'</b></td><td style="color:var(--mut)">'+fmtNum(r.team)+(r.unit||'')+'</td><td>'+gap+'</td></tr>';
+  }).join('');
+}
+renderBench(benchDemo);
+(function(){
+  var URLS=['companion_metrics.json','../integration/companion_metrics.json'];
+  function ff(u,i){ i=i||0; if(i>=u.length) return Promise.reject(new Error('no src')); return fetch(u[i]).then(function(r){ if(!r.ok) throw new Error('http'); return r.json(); }).catch(function(){ return ff(u,i+1); }); }
+  try{ ff(URLS).then(function(d){ if(d&&d.top_behaviors&&Array.isArray(d.top_behaviors.rows)){ renderBench(d.top_behaviors); var s=document.getElementById('benchSrc'); if(s) s.textContent='live · топы vs команда'; } }).catch(function(){}); }catch(e){}
+})();
+</script>
 </body>
 </html>

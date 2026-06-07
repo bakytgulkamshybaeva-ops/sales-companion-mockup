@@ -206,7 +206,54 @@ tr.hl td{background:var(--amber-bg);font-weight:800}
 .skillcard .sg{font-size:15px;font-weight:800;color:var(--navy);margin:2px 0 7px}
 .skillcard .sx{font-size:13.5px;color:var(--ink);line-height:1.55}
 .skillcard .sx b{color:var(--teal-d)}
-@media(max-width:1080px){.grid2{grid-template-columns:1fr}.calls{grid-template-columns:1fr}.rail{order:-1}}
+
+/* speed-to-lead banner (Мой день) */
+.speedbar{display:flex;align-items:center;gap:16px;background:linear-gradient(120deg,var(--navy),#0a2235);color:#fff;border-radius:16px;padding:16px 20px;margin-bottom:18px;box-shadow:var(--shadow)}
+.speedbar .sb-ic{width:46px;height:46px;border-radius:13px;background:linear-gradient(135deg,var(--gold),#c98a2a);display:flex;align-items:center;justify-content:center;font-size:24px;flex:none}
+.speedbar .sb-main{flex:1;min-width:0}
+.speedbar .sb-t{font-size:14px;font-weight:700;color:#dce7f0}
+.speedbar .sb-t b{font-size:21px;font-weight:900;color:#fff;margin:0 5px}
+.speedbar .sb-tg{font-size:11px;font-weight:800;border-radius:8px;padding:3px 9px;margin-left:2px}
+.speedbar .sb-tg.ok{background:rgba(57,217,138,.2);color:#7ef0b3} .speedbar .sb-tg.bad{background:rgba(231,111,90,.25);color:#ffb4a6}
+.speedbar .sb-d{font-size:12.5px;color:#9fbace;font-weight:600;margin-top:4px;line-height:1.5}
+.speedbar .sb-d b{color:var(--gold)}
+.speedbar .sb-meter{height:8px;border-radius:6px;background:rgba(255,255,255,.14);overflow:hidden;position:relative;margin-top:9px;max-width:380px}
+.speedbar .sb-meter i{position:absolute;left:0;top:0;bottom:0;border-radius:6px;background:linear-gradient(90deg,var(--teal),#39d98a)}
+.speedbar .sb-cta{flex:none}
+.cli .rk{width:26px;height:26px;border-radius:8px;background:var(--navy);color:#fff;font-weight:900;font-size:13px;display:flex;align-items:center;justify-content:center;flex:none}
+.cli .prio{font-size:10px;font-weight:800;border-radius:6px;padding:2px 7px;margin-left:7px;vertical-align:middle}
+.cli .prio.now{background:var(--red-bg);color:var(--red)} .cli .prio.soon{background:var(--amber-bg);color:var(--amber)} .cli .prio.plan{background:var(--green-bg);color:var(--green)}
+
+/* тренажёр возражений */
+.train4{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}
+.train4 .t4{flex:1;min-width:120px;background:#f5f8fa;border-radius:11px;padding:11px 13px;font-size:12.5px;font-weight:700;color:var(--navy);line-height:1.4}
+.train4 .t4 b{display:block;font-size:11px;color:var(--teal-d);font-weight:800;margin-bottom:3px}
+.trainwrap{display:grid;grid-template-columns:290px 1fr;gap:18px;align-items:start;margin-top:16px}
+.objlist{display:flex;flex-direction:column;gap:8px}
+.objchip{display:flex;align-items:center;gap:11px;text-align:left;width:100%;background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;font-size:13.5px;font-weight:700;color:var(--navy);box-shadow:var(--shadow)}
+.objchip:hover{border-color:var(--teal);background:#f7fafc}
+.objchip.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.objchip .oq{font-size:18px;flex:none}
+.objchip .of{margin-left:auto;font-size:16px;color:var(--mut)} .objchip.on .of{color:#9fbace}
+.step{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.step:last-child{border-bottom:none}
+.step .sn{width:28px;height:28px;border-radius:9px;background:var(--teal);color:#fff;font-weight:900;font-size:14px;display:flex;align-items:center;justify-content:center;flex:none}
+.step .stxt{font-size:13.5px;line-height:1.5}
+.step .stxt b{color:var(--navy)}
+.step .stxt .say{display:block;margin-top:5px;font-size:13.5px;color:var(--teal-d);font-weight:700}
+.whybox{background:var(--green-bg);color:#176b3c;border-radius:12px;padding:12px 15px;font-size:13px;font-weight:600;line-height:1.5;margin-top:14px}
+.whybox b{color:#0f5a30}
+.bench{width:100%}
+.bench .br{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.bench .br:last-child{border-bottom:none}
+.bench .bm{flex:1;font-size:13.5px;font-weight:700}
+.bench .bcell{text-align:center;min-width:74px}
+.bench .bcell .bv{font-size:17px;font-weight:900;letter-spacing:-.01em}
+.bench .bcell .bl{font-size:10px;color:var(--mut);font-weight:700;text-transform:uppercase;letter-spacing:.03em}
+.bench .bcell.top .bv{color:var(--teal-d)} .bench .bcell.team .bv{color:var(--slate)}
+.bench .gap{font-size:11px;font-weight:800;border-radius:7px;padding:3px 8px;white-space:nowrap}
+.bench .gap.good{background:var(--green-bg);color:var(--green)}
+@media(max-width:1080px){.grid2{grid-template-columns:1fr}.calls{grid-template-columns:1fr}.rail{order:-1}.trainwrap{grid-template-columns:1fr}.speedbar{flex-wrap:wrap}}
 </style>
 </head>
 <body>
@@ -222,6 +269,7 @@ tr.hl td{background:var(--amber-bg);font-weight:800}
 <aside class="side">
   <button class="nav on" id="n-day" onclick="go('day')"><span class="ic">📋</span>Мой день</button>
   <button class="nav" id="n-calls" onclick="go('calls')"><span class="ic">🎧</span>Звонки<span class="pill">1</span></button>
+  <button class="nav" id="n-train" onclick="go('train')"><span class="ic">🎯</span>Тренажёр</button>
   <button class="nav" id="n-money" onclick="go('money')"><span class="ic">💰</span>Деньги</button>
   <button class="nav" id="n-kpi" onclick="go('kpi')"><span class="ic">📊</span>KPI и бонус</button>
   <button class="nav" id="n-team" onclick="go('team')"><span class="ic">🤝</span>Команда</button>
@@ -236,10 +284,21 @@ tr.hl td{background:var(--amber-bg);font-weight:800}
   <section class="screen on" id="s-day">
     <div class="h1">Мой день</div>
     <div class="sub">Вторник, 5 июня · <b>фокус недели: дожать 3 встречи</b> · список собран из Bitrix24 по сигналам</div>
+
+    <div class="speedbar" id="speedBar">
+      <div class="sb-ic">⚡</div>
+      <div class="sb-main">
+        <div class="sb-t">Скорость до 1-го звонка: <b id="sbVal">22 мин</b><span class="sb-tg bad" id="sbTag">цель ≤15 мин</span></div>
+        <div class="sb-d">Чем быстрее дозвон по свежему лиду — тем выше конверсия (5 минут против часа = в разы больше встреч). <b id="sbFresh">2 свежих лида</b> ждут звонка прямо сейчас.</div>
+        <div class="sb-meter"><i id="sbMeter" style="width:68%"></i></div>
+      </div>
+      <button class="btn sb-cta" onclick="act('Позвонить свежему лиду','новый лид')">📞 Звонить свежему</button>
+    </div>
+
     <div class="stats">
       <div class="stat cool"><div class="n">2</div><div class="l">встречи сегодня</div></div>
       <div class="stat warm"><div class="n">4</div><div class="l">недозвона</div></div>
-      <div class="stat hot"><div class="n">3</div><div class="l">остывают после визита</div></div>
+      <div class="stat hot"><div class="n" id="dayCooling">3</div><div class="l">остывают без касания</div></div>
     </div>
     <div class="grid2">
       <div class="card">
@@ -329,6 +388,59 @@ tr.hl td{background:var(--amber-bg);font-weight:800}
       </div>
       <div style="font-size:11px;color:var(--mut);margin-top:10px">Методика: Гребенюк / Аномалия → адаптация ATAMŪRA (уважительный тон, недвижимость)</div>
     </div>
+  </section>
+
+  <!-- ===== ТРЕНАЖЁР ВОЗРАЖЕНИЙ ===== -->
+  <section class="screen" id="s-train">
+    <div class="h1">Тренажёр возражений</div>
+    <div class="sub">Бронь встречи рождается в разговоре. Отрабатываем по <b>4 шагам</b> — уважительно, без давления, всегда возвращаемся к следующему шагу (показ/расчёт).</div>
+
+    <div class="card">
+      <div class="ct">🧩 Каркас ответа на любое возражение <small>сначала согласие — в конце следующий шаг</small></div>
+      <div class="train4">
+        <div class="t4"><b>1 · Принять</b>Согласиться, снять напряжение</div>
+        <div class="t4"><b>2 · Уточнить</b>Что стоит за возражением?</div>
+        <div class="t4"><b>3 · Локализовать</b>Это единственный барьер?</div>
+        <div class="t4"><b>4 · Вернуть к шагу</b>Предложить визит / расчёт</div>
+      </div>
+    </div>
+
+    <div class="trainwrap">
+      <div>
+        <div class="lbl" style="margin:0 2px 8px">Частые возражения · нажми</div>
+        <div class="objlist" id="objList"></div>
+        <div class="card tight" style="margin-top:12px;border-left:5px solid var(--gold)">
+          <div class="ct">🏋️ Тренировка дня</div>
+          <div style="font-size:13px;color:var(--ink);line-height:1.55">Проговори <b>«Я подумаю»</b> вслух 3 раза по каркасу — закрепляется в речи.</div>
+          <button class="btn" style="width:100%;margin-top:11px;justify-content:center" onclick="toast('🏋️ Тренировка засчитана — +15 коинов')">Отметить тренировку · +15 🪙</button>
+        </div>
+      </div>
+      <div class="card" id="objDetail"></div>
+    </div>
+
+    <div class="grid2" style="margin-top:16px">
+      <div class="card">
+        <div class="ct">🔤 Быстрая квалификация ABC <small>кого дожимать в первую очередь</small></div>
+        <table>
+          <thead><tr><th>Класс</th><th>Признак</th><th>Действие</th></tr></thead>
+          <tbody>
+            <tr class="hl"><td><b>A</b></td><td>Потребность + деньги/ипотека + решает скоро</td><td>Максимум приоритета: показ, расчёт, закрыть на визит</td></tr>
+            <tr><td><b>B</b></td><td>Потребность есть, срок позже / решение зреет</td><td>Прогрев, фиксация условий, follow-up по дате</td></tr>
+            <tr><td><b>C</b></td><td>Нет потребности / бюджета / срока</td><td>Лёгкое касание или вежливо закрыть, без переработки</td></tr>
+          </tbody>
+        </table>
+        <div style="font-size:12px;color:var(--mut);font-weight:600;margin-top:10px;line-height:1.5">3 вопроса на класс: <b>для кого</b> выбираете · <b>когда</b> планируете решение · <b>комфортный платёж</b> (наличные / ипотека / рассрочка)?</div>
+      </div>
+      <div class="rail">
+        <div class="card tight">
+          <div class="ct">🎁 Оффер на показ</div>
+          <div style="font-size:13.5px;line-height:1.6;color:var(--ink)">Не «приходите посмотреть», а ценность времени:<br><br>«Подготовлю <b>2–3 варианта</b> под вашу задачу, <b>рассчитаю условия и платёж</b>, сравним сценарии и покажу маршрут по объекту, как он работает в жизни».</div>
+          <div class="lbl" style="margin:13px 2px 7px">Под сегмент</div>
+          <div style="font-size:12.5px;line-height:1.7;color:var(--ink)">👨‍👩‍👧 Семья — школа / двор / планировка<br>📈 Инвестор — доходность, ликвидность, вход<br>🏙 Премиум — приватность, статус, соседи<br>🔑 Первая квартира — платёж, простота, сроки</div>
+        </div>
+      </div>
+    </div>
+    <div style="font-size:11px;color:var(--mut);margin-top:10px">Методика: Гребенюк / «Аномалия» → адаптация ATAMŪRA (уважительный тон, недвижимость)</div>
   </section>
 
   <!-- ===== ДЕНЬГИ ===== -->
@@ -439,6 +551,12 @@ tr.hl td{background:var(--amber-bg);font-weight:800}
         </div>
       </div>
     </div>
+
+    <div class="card" style="margin-top:16px">
+      <div class="ct">🏆 Что делают топы <small id="benchSrc">привычки лучших vs команда · демо</small></div>
+      <div class="bench" id="benchRows"></div>
+      <div style="font-size:12px;color:var(--mut);font-weight:600;margin-top:12px;line-height:1.5">Топы — это не «талант», а привычки: быстрее перезванивают, не дают лидам остыть, делают больше успешных звонков. <b style="color:var(--teal-d)">Скопируй одну привычку</b> на этой неделе — и догонишь по результату.</div>
+    </div>
   </section>
 
   <!-- ===== ПРОГРЕСС / ИГРА ===== -->
@@ -504,18 +622,18 @@ function go(t){
   window.scrollTo(0,0);
 }
 
-/* ДЕНЬ */
+/* ДЕНЬ — ранжированный список «сделай эти 5 действий сейчас» (порядок = приоритет) */
 var clients=[
-  {nm:'Айгерим С.', jk:'Аура', heat:'hot', ic:'🔥', why:'Была на визите <b>5 дней назад</b> — тишина, остывает', a:'Позвонить'},
-  {nm:'Руслан М.', jk:'Керуен', heat:'hot', ic:'🔥', why:'Заходил на сайт ЖК <b>3 раза за вчера</b> — горячий', a:'Позвонить'},
-  {nm:'Данияр Т.', jk:'Аура', heat:'warm', ic:'🟠', why:'Обещан <b>расчёт рассрочки</b> — не отправлен', a:'Отправить расчёт'},
-  {nm:'Гульнара А.', jk:'Атмосфера', heat:'warm', ic:'🟠', why:'<b>Недозвон ×2</b> утром — попробуй вечером', a:'Позвонить'},
-  {nm:'Ержан К.', jk:'Атмосфера', heat:'cool', ic:'🟢', why:'<b>Визит сегодня 16:00</b> — подтверди за 2 часа', a:'Подтвердить визит'}
+  {nm:'Руслан М.', jk:'Керуен', heat:'hot', ic:'🔥', prio:'now', pl:'СЕЙЧАС', why:'Заходил на сайт ЖК <b>3 раза за вчера</b> — горячий, лови пока думает', a:'Позвонить'},
+  {nm:'Ержан К.', jk:'Атмосфера', heat:'cool', ic:'🟢', prio:'now', pl:'ВИЗИТ СЕГОДНЯ', why:'<b>Визит сегодня 16:00</b> — подтверди за 2 часа, чтобы не сорвался', a:'Подтвердить визит'},
+  {nm:'Айгерим С.', jk:'Аура', heat:'hot', ic:'🔥', prio:'soon', pl:'ОСТЫВАЕТ', why:'Была на визите <b>5 дней назад</b> — тишина, дожать до брони', a:'Позвонить'},
+  {nm:'Данияр Т.', jk:'Аура', heat:'warm', ic:'🟠', prio:'soon', pl:'ОБЕЩАНИЕ', why:'Обещан <b>расчёт рассрочки</b> — не отправлен, держишь слово', a:'Отправить расчёт'},
+  {nm:'Гульнара А.', jk:'Атмосфера', heat:'warm', ic:'🟠', prio:'plan', pl:'ПЕРЕЗВОН', why:'<b>Недозвон ×2</b> утром — попробуй вечером, когда дома', a:'Позвонить'}
 ];
 function renderCli(){
-  document.getElementById('cliList').innerHTML=clients.map(function(c){
-    return '<div class="cli '+c.heat+'"><div class="heat">'+c.ic+'</div>'+
-      '<div class="info"><div class="nm">'+c.nm+'<span class="jk">ЖК '+c.jk+'</span></div><div class="why">'+c.why+'</div></div>'+
+  document.getElementById('cliList').innerHTML=clients.map(function(c,i){
+    return '<div class="cli '+c.heat+'"><div class="rk">'+(i+1)+'</div><div class="heat">'+c.ic+'</div>'+
+      '<div class="info"><div class="nm">'+c.nm+'<span class="jk">ЖК '+c.jk+'</span><span class="prio '+c.prio+'">'+c.pl+'</span></div><div class="why">'+c.why+'</div></div>'+
       '<div class="act"><button class="btn" onclick="act(\''+c.a+'\',\''+c.nm+'\')">📞 '+c.a+'</button>'+
       '<button class="btn ghost" onclick="act(\'Отложить\',\''+c.nm+'\')">⏰</button></div></div>';
   }).join('');
@@ -618,7 +736,83 @@ function renderProgress(){
 }
 function celebrate(){ toast('🎉 Закрытие отмечено — +50 коинов!'); }
 
-renderCli(); renderCalls(); openCall('c1'); calcBonus(); renderProgress();
+/* ТРЕНАЖЁР ВОЗРАЖЕНИЙ — банк по 4 шагам (Гребенюк → ATAMŪRA, уважительный тон) */
+var objections=[
+ {id:'price', ic:'💸', q:'«Дорого»', steps:[
+   {t:'Принять', say:'«Понимаю, бюджет — это важно. Давайте по-честному.»'},
+   {t:'Уточнить', say:'«Дорого по сравнению с чем — с другим ЖК или с вашим ориентиром по платежу?»'},
+   {t:'Локализовать', say:'«Если по цене и условиям договоримся — в остальном объект подходит?»'},
+   {t:'Вернуть к шагу', say:'«На встрече подберу 2–3 варианта под ваш платёж и рассчитаю рассрочку/ипотеку — увидите реальные цифры. Удобно в четверг в 16:00?»'}],
+   why:'«Цена» редко настоящий барьер — за ней прячется сравнение или неуверенность в платеже. Локализация отделяет реальное возражение от отговорки.'},
+ {id:'think', ic:'🤔', q:'«Я подумаю»', steps:[
+   {t:'Принять', say:'«Конечно, такое решение не принимают на бегу.»'},
+   {t:'Уточнить', say:'«Подскажите, какой именно вопрос хочется обдумать — цена, сроки или сам объект?»'},
+   {t:'Локализовать', say:'«Кроме этого, что-то ещё смущает?»'},
+   {t:'Вернуть к шагу', say:'«Давайте обдумаем вместе на показе — подготовлю расчёт и варианты, решение будет на фактах, а не на сомнениях. Получится в пятницу?»'}],
+   why:'«Подумаю» — это спрятанный конкретный вопрос. Вытащив его, вы возвращаете разговор к следующему шагу вместо тупика.'},
+ {id:'wa', ic:'📲', q:'«Пришлите на WhatsApp»', steps:[
+   {t:'Принять', say:'«Да, обязательно пришлю — чтобы было под рукой.»'},
+   {t:'Уточнить', say:'«Чтобы прислать именно нужное — что сейчас в приоритете: планировки, цена или условия рассрочки?»'},
+   {t:'Локализовать', say:'«Пришлю подборку. А чтобы не утонуть в файлах — давайте коротко покажу вживую то, что подойдёт?»'},
+   {t:'Вернуть к шагу', say:'«Зарезервирую вам время на показ и подготовлю расчёт — 30 минут и вся картина сразу. Завтра в 12:00 ок?»'}],
+   why:'Сброс «в WhatsApp» — вежливый уход. Соглашаемся, но не отдаём инициативу: материалы + конкретный следующий шаг, а не информационная свалка.'},
+ {id:'look', ic:'👀', q:'«Просто смотрю»', steps:[
+   {t:'Принять', say:'«Отлично, на старте выбора так и нужно — без спешки.»'},
+   {t:'Уточнить', say:'«Для себя выбираете или как инвестицию? И когда примерно хотели бы заехать?»'},
+   {t:'Локализовать', say:'«Понял. А если найдём идеальный вариант — рассматривали бы в этом году?»'},
+   {t:'Вернуть к шагу', say:'«Тогда не буду грузить — на показе сориентирую по рынку и покажу 2–3 варианта, чтобы было с чем сравнивать. Суббота удобна?»'}],
+   why:'«Просто смотрю» — обычно класс B/C по ABC. Квалифицируем мягко: узнаём срок и задачу, предлагаем необязывающий, но конкретный шаг.'},
+ {id:'consult', ic:'👫', q:'«Надо посоветоваться»', steps:[
+   {t:'Принять', say:'«Правильно — такое решение принимают вместе.»'},
+   {t:'Уточнить', say:'«С кем будете советоваться — и что для него/неё будет главным в выборе?»'},
+   {t:'Локализовать', say:'«А лично вам объект откликается?»'},
+   {t:'Вернуть к шагу', say:'«Давайте придёте на показ вдвоём — отвечу на вопросы сразу обоим, не придётся пересказывать. Когда удобно вам обоим?»'}],
+   why:'Перекладывание на третье лицо. Подключаем ЛПР к показу напрямую, чтобы смысл не терялся в пересказе.'},
+ {id:'compet', ic:'⚖️', q:'«У конкурента дешевле»', steps:[
+   {t:'Принять', say:'«Хорошо, что сравниваете — так и надо.»'},
+   {t:'Уточнить', say:'«С каким объектом сравниваете и что там по срокам сдачи и стадии стройки?»'},
+   {t:'Локализовать', say:'«Если по цене за м² и условиям выйдем сопоставимо — наш объект интереснее?»'},
+   {t:'Вернуть к шагу', say:'«На встрече разложу цену за м², сроки и что входит — часто «дешевле» оказывается про разное. Покажу честное сравнение. Чт в 17:00?»'}],
+   why:'Сравнение с конкурентом — сигнал интереса, не отказ. Переводим в честное сравнение ценности на показе, где у вас преимущество.'}
+];
+function renderObj(){
+  document.getElementById('objList').innerHTML=objections.map(function(o){
+    return '<button class="objchip" id="obj-'+o.id+'" onclick="openObj(\''+o.id+'\')"><span class="oq">'+o.ic+'</span>'+o.q+'<span class="of">→</span></button>';
+  }).join('');
+}
+function openObj(id){
+  document.querySelectorAll('.objchip').forEach(function(b){b.classList.remove('on');});
+  var b=document.getElementById('obj-'+id); if(b) b.classList.add('on');
+  var o=objections.find(function(x){return x.id===id;}); if(!o) return;
+  document.getElementById('objDetail').innerHTML=
+    '<div class="ct">'+o.ic+' Ответ на '+o.q+' <small>4 шага · уважительно</small></div>'+
+    o.steps.map(function(s,i){return '<div class="step"><div class="sn">'+(i+1)+'</div><div class="stxt"><b>'+s.t+'</b><span class="say">'+s.say+'</span></div></div>';}).join('')+
+    '<div class="whybox">💡 <b>Почему работает:</b> '+o.why+'</div>';
+}
+
+/* ЧТО ДЕЛАЮТ ТОПЫ — демо (перекрывается top_behaviors из коннектора) */
+var benchDemo={top_n:2, team_n:6, rows:[
+  {metric:'Успешные звонки', top:155, team:136, better:'higher', unit:''},
+  {metric:'Минут разговора / звонок', top:1.4, team:1.3, better:'higher', unit:' мин'},
+  {metric:'Скорость до 1-го звонка', top:11.5, team:20.5, better:'lower', unit:' мин'},
+  {metric:'Остывающих лидов', top:3.5, team:7.5, better:'lower', unit:''},
+  {metric:'Обработано лидов', top:196.5, team:192, better:'higher', unit:''}
+]};
+function fmtNum(n){ return (typeof n==='number') ? (Math.round(n*10)/10).toLocaleString('ru-RU') : '—'; }
+function renderBench(b){
+  if(!b||!Array.isArray(b.rows)) b=benchDemo;
+  document.getElementById('benchRows').innerHTML=b.rows.map(function(r){
+    var good = (typeof r.top==='number'&&typeof r.team==='number') ? ((r.better==='higher') ? (r.top>r.team) : (r.top<r.team)) : false;
+    var gapTxt='—';
+    if(good){ var diff = r.better==='higher' ? (r.top-r.team) : (r.team-r.top); gapTxt='лучше на '+fmtNum(diff)+(r.unit||''); }
+    return '<div class="br"><div class="bm">'+r.metric+'</div>'+
+      '<div class="bcell top"><div class="bv">'+fmtNum(r.top)+(r.unit||'')+'</div><div class="bl">топы</div></div>'+
+      '<div class="bcell team"><div class="bv">'+fmtNum(r.team)+(r.unit||'')+'</div><div class="bl">команда</div></div>'+
+      '<span class="gap'+(good?' good':'')+'">'+gapTxt+'</span></div>';
+  }).join('');
+}
+
+renderCli(); renderCalls(); openCall('c1'); calcBonus(); renderProgress(); renderObj(); openObj('price'); renderBench(benchDemo);
 
 /* ===== DATA-LAYER (additive, fallback-safe) =====
    Тянет реальные метрики из коннектора companion_metrics.py (companion_metrics.json).
@@ -641,6 +835,14 @@ function applyMetrics(data){
       if(typeof m.crm_discipline_pct==='number') setTxt('kpiCrm', m.crm_discipline_pct+'%');
       if(typeof m.meetings_held==='number') setTxt('kpiVis', m.meetings_held);
       if(typeof m.answered_calls==='number') setTxt('kpiCalls', m.answered_calls);
+      // speed-to-lead (Мой день): значение + цвет цели + заполнение шкалы (полнее = быстрее = лучше)
+      if(typeof m.speed_to_lead_min==='number'){
+        setTxt('sbVal', m.speed_to_lead_min+' мин');
+        var tgt=(data.speed_to_lead&&data.speed_to_lead.target_min)||15;
+        try{ var tag=document.getElementById('sbTag'); if(tag){ var ok=m.speed_to_lead_min<=tgt; tag.textContent=(ok?'в цели ≤':'цель ≤')+tgt+' мин'; tag.className='sb-tg '+(ok?'ok':'bad'); } }catch(e){}
+        try{ var mtr=document.getElementById('sbMeter'); if(mtr){ mtr.style.width=Math.max(8,Math.min(100,Math.round(tgt/m.speed_to_lead_min*100)))+'%'; } }catch(e){}
+      }
+      if(typeof m.cooling_leads==='number') setTxt('dayCooling', m.cooling_leads);
       if(m.tier_band){ setTxt('kpiTier', m.tier_band);
         try{ var tr=document.getElementById('tierRow'); if(tr){ var td=tr.querySelector('td'); if(td) td.textContent=m.tier_band; } }catch(e){} }
       live=true;
@@ -654,6 +856,11 @@ function applyMetrics(data){
       setTxt('ldCalls', fmt(calls));
       if(data.period) setTxt('ldPeriod', (data.period.from||'') + ' .. ' + (data.period.to||''));
       try{ document.getElementById('liveDept').style.display='block'; }catch(e){}
+      live=true;
+    }
+    // «Что делают топы» — реальный бенчмарк из коннектора (перекрывает демо)
+    if(data.top_behaviors && Array.isArray(data.top_behaviors.rows)){
+      try{ renderBench(data.top_behaviors); var bs=document.getElementById('benchSrc'); if(bs) bs.textContent='привычки лучших vs команда · live'; }catch(e){}
       live=true;
     }
     if(live){ try{ var b=document.getElementById('srcBadge'); if(b){ b.textContent='данные: live'; b.classList.add('live'); } }catch(e){} }
